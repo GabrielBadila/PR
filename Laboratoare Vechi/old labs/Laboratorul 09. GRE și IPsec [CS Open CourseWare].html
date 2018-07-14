@@ -1,0 +1,656 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0047)https://ocw.cs.pub.ro/courses/pr/laboratoare/09 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>
+    Laboratorul 09. GRE și IPsec    [CS Open CourseWare]
+  </title>
+
+  <meta name="generator" content="DokuWiki">
+<meta name="robots" content="index,follow">
+<meta name="date" content="2017-01-17T10:55:58+0200">
+<meta name="keywords" content="pr,laboratoare,09">
+<link rel="search" type="application/opensearchdescription+xml" href="https://ocw.cs.pub.ro/courses/lib/exe/opensearch.php" title="CS Open CourseWare">
+<link rel="start" href="https://ocw.cs.pub.ro/courses/">
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://ocw.cs.pub.ro/courses/feed.php">
+<link rel="alternate" type="application/rss+xml" title="Current Namespace" href="https://ocw.cs.pub.ro/courses/feed.php?mode=list&amp;ns=pr:laboratoare">
+<link rel="alternate" type="text/html" title="Plain HTML" href="https://ocw.cs.pub.ro/courses/_export/xhtml/pr/laboratoare/09">
+<link rel="canonical" href="http://ocw.cs.pub.ro/courses/pr/laboratoare/09">
+<link rel="stylesheet" type="text/css" href="./Laboratorul 09. GRE și IPsec [CS Open CourseWare]_files/css.php">
+<script type="text/javascript">/*<![CDATA[*/var NS='pr:laboratoare';var JSINFO = {"id":"pr:laboratoare:09","namespace":"pr:laboratoare","isadmin":0,"isauth":0};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="./Laboratorul 09. GRE și IPsec [CS Open CourseWare]_files/js.php"></script>
+<script type="text/x-mathjax-config;executed=true">/*<![CDATA[*/MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+        displayMath: [ ["$$","$$"], ["\\[","\\]"] ],
+        processEscapes: true
+    }
+});
+/*!]]>*/</script>
+<script src="./Laboratorul 09. GRE și IPsec [CS Open CourseWare]_files/MathJax.js.download" id=""></script>
+<script type="text/javascript">/*<![CDATA[*/
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		  
+/*!]]>*/</script><script src="./Laboratorul 09. GRE și IPsec [CS Open CourseWare]_files/ga.js.download" type="text/javascript"></script>
+<script type="text/javascript">/*<![CDATA[*/
+var pageTracker = _gat._getTracker("UA-38383934-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+		  
+/*!]]>*/</script>
+
+  <link rel="shortcut icon" href="https://ocw.cs.pub.ro/courses/lib/tpl/arctic/images/favicon.ico">
+
+  
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body><div id="MathJax_Message" style="display: none;"></div>
+<div id="wrapper" class="show">
+  <div class="dokuwiki">
+
+    
+    <div class="stylehead">
+      <div class="header">
+        <div class="pagename">
+          <a href="https://ocw.cs.pub.ro/courses/pr/"><img height="70" src="./Laboratorul 09. GRE și IPsec [CS Open CourseWare]_files/sigla_pr.png"> </a>        </div>
+        <div class="logo">
+          <a style="color: #AAA !important;" href="https://ocw.cs.pub.ro/courses/systems/"><img height="70" src="./Laboratorul 09. GRE și IPsec [CS Open CourseWare]_files/systems.png" name="dokuwiki__top"></a>        </div>
+      </div>
+    
+       
+      <div class="breadcrumbs">
+              </div>
+      
+            </div>
+
+                  <div class="bar" id="bar__top">
+        <div class="bar-left">
+                  </div>
+        <div class="bar-right">
+          <a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/09?do=recent" class="action recent" accesskey="r" rel="nofollow" title="Recent changes [R]">Recent changes</a><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/09?do=login&amp;sectok=ef1d3ac6a545396b85c4b4754dfe2228" class="action login" rel="nofollow" title="Login">Login</a>        </div>
+    </div>
+        
+    
+    
+    
+              <div class="left_page">
+          
+<h2 class="sectionedit1" id="laboratorul_09_gre_si_ipsec">Laboratorul 09. GRE și IPsec</h2>
+<div class="level2">
+
+</div>
+
+<h3 class="sectionedit2" id="topologie">Topologie</h3>
+<div class="level3">
+
+<p>
+<a href="https://ocw.cs.pub.ro/courses/_detail/pr/laboratoare/9_topologie.png?id=pr%3Alaboratoare%3A09" class="media" title="pr:laboratoare:9_topologie.png"><img src="./Laboratorul 09. GRE și IPsec [CS Open CourseWare]_files/9_topologie.png" class="mediacenter" alt=""></a>
+</p>
+
+</div>
+
+<h3 class="sectionedit3" id="cerinte">Cerințe</h3>
+<div class="level3">
+
+</div>
+
+<h4 id="setup">Setup</h4>
+<div class="level4">
+
+<p>
+</p><p></p><div class="noteimportant"> Descărcați configurațiile inițiale de <a href="https://ocw.cs.pub.ro/courses/_media/pr/laboratoare/09_initial_configs.zip" class="media mediafile mf_zip" title="pr:laboratoare:09_initial_configs.zip (2 KB)">aici</a>. 
+</div><p></p>
+<p></p>
+
+</div>
+
+<h4 id="exercitii">Exerciții</h4>
+<div class="level4">
+
+<p>
+</p><p></p><div class="noteclassic">
+Toate configurațiile au fost încărcate pe rutere. Nu începeți taskurile acestui laborator fără să încărcați initial_configs.
+
+</div><p></p>
+<p></p>
+
+</div>
+
+<h3 class="sectionedit4" id="gre">GRE</h3>
+<div class="level3">
+
+<p>
+1. [5p] Conectivitatea între Lucario și Machop a fost deja configurată folosind OSPF. Verificați faptul că Lucario poate da ping cu succes în Machop.
+</p>
+
+<p>
+2. [10p] Configurați un tunel GRE între Lucario și Machop. Folosiți pentru sursă și destinație interfețele fizice. Pentru partea de adresare, folosiți adrese din rețeaua 192.168.0.0/30.
+</p>
+
+<p>
+3. [10p] Folosind rute statice, configurați ca traficul între interfețele Lo1 ale lui Lucario și Machop să treacă prin tunelul GRE. Testați folosind <code>traceroute</code>.
+</p>
+
+<p>
+</p><p></p><div class="noteclassic">
+Pentru testare, folosiți opțiunea <code>source</code> a comenzii <code>traceroute</code>.
+
+</div><p></p>
+<p></p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 09. GRE și IPsec [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;">Pe <strong>Lucario</strong>:
+<pre class="code">R1(config)#interface Tunnel 0
+*Jan 14 22:11:14.371: %LINEPROTO-5-UPDOWN: Line protocol on Interface Tunnel0, changed state to down
+R1(config-if)#tunnel destination 192.168.23.3 
+R1(config-if)#tunnel source 192.168.12.1    
+*Jan 14 22:11:44.219: %LINEPROTO-5-UPDOWN: Line protocol on Interface Tunnel0, changed state to up
+R1(config-if)#ip address 13.13.13.1 255.255.255.248
+R1(config-if)#exit
+R1(config)#ip route 11.3.3.0 255.255.255.0 13.13.13.3</pre>
+
+<p>
+Pe <strong>Machop</strong>:
+</p>
+<pre class="code">R3(config)#interface Tunnel 0
+R3(config-if)#tunnel source 192.168
+*Jan 14 22:12:27.599: %LINEPROTO-5-UPDOWN: Line protocol on Interface Tunnel0, changed state to down
+R3(config-if)#tunnel source 192.168.23.3
+R3(config-if)#tunnel destination 192.168.12.1
+*Jan 14 22:12:36.351: %LINEPROTO-5-UPDOWN: Line protocol on Interface Tunnel0, changed state to up
+R3(config-if)#ip address 13.13.13.3 255.255.255.248
+R3(config-if)#exit
+R3(config)#ip route 11.1.1.0 255.255.255.0 13.13.13.1</pre>
+
+<p>
+If OSPF is running, the following commands are required to advertise the true loopback subnet masks (instead of the /32 masks):
+</p>
+
+<p>
+On <strong>R1</strong>:
+</p>
+<pre class="code">R1(config)#interface Loopback 1
+R1(config-if)#ip ospf network point-to-point
+R1(config-if)#exit</pre>
+
+<p>
+On <strong>R3</strong>:
+</p>
+<pre class="code">R3(config)#interface Loopback 1
+R3(config-if)#ip ospf network point-to-point
+R3(config-if)#exit</pre>
+
+<p>
+Test that traffic passes through the tunnel:
+</p>
+<pre class="code">R1#traceroute 11.3.3.3  
+Translating "11.3.3.3"
+
+Type escape sequence to abort.
+Tracing the route to 11.3.3.3
+
+  1 13.13.13.3 48 msec *  16 msec</pre>
+</div></div>
+
+</div>
+
+<h3 class="sectionedit5" id="ipsec">IPSec</h3>
+<div class="level3">
+
+<p>
+Dorim să criptăm traficul dintre Lo0 de pe Lucario și Lo0 de pe Machop. Vom configura un tunel IPsec între cele două rutere.
+</p>
+
+<p>
+4. [15p] Configurați următoarea politică ISAKMP pe Lucario și Machop:
+</p>
+<ul>
+<li class="level1"><div class="li"> autentificare: pre-shared keys </div>
+</li>
+<li class="level1"><div class="li"> criptare: aes 256 </div>
+</li>
+<li class="level1"><div class="li"> hash: sha1 </div>
+</li>
+<li class="level1"><div class="li"> grup diffie-hellman: 2 </div>
+</li>
+<li class="level1"><div class="li"> lifetime: 3600 </div>
+</li>
+</ul>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 09. GRE și IPsec [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;">Pe <strong>Lucario</strong>:
+<pre class="code">Lucario(config)#crypto isakmp policy 1 
+Lucario(config-isakmp)#authentication pre-share
+Lucario(config-isakmp)#encryption aes 256
+Lucario(config-isakmp)#hash sha
+Lucario(config-isakmp)#group 2
+Lucario(config-isakmp)#lifetime 3600
+Lucario(config-isakmp)#exit</pre>
+
+<p>
+Pe <strong>Machop</strong>:
+</p>
+<pre class="code">Machop(config)#crypto isakmp policy 1
+Machop(config-isakmp)#authentication pre-share
+Machop(config-isakmp)#encryption aes 256
+Machop(config-isakmp)#hash sha
+Machop(config-isakmp)#group 2
+Machop(config-isakmp)#lifetime 3600
+Machop(config-isakmp)#exit</pre>
+</div></div>
+
+<p>
+5. [10p] Configurați 'prrulz' ca pre-shared key pe Lucario și Machop.
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 09. GRE și IPsec [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;">Pe <strong>Lucario</strong>:
+<pre class="code">Lucario(config)#crypto isakmp key 0 prrulz address 191.105.157.2</pre>
+
+<p>
+Pe <strong>Machop</strong>:
+</p>
+<pre class="code">Machop(config)#crypto isakmp key 0 prrulz address 66.218.168.5</pre>
+</div></div>
+
+<p>
+6. [10p] Configurați următorul transform set pe Lucario și Machop:
+</p>
+<ul>
+<li class="level1"><div class="li"> Nume: TS_PR </div>
+</li>
+<li class="level1"><div class="li"> Transform set: esp-aes 256 esp-sha-hmac </div>
+</li>
+<li class="level1"><div class="li"> Mod: tunel </div>
+</li>
+</ul>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 09. GRE și IPsec [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;">Pe <strong>Lucario</strong>:
+<pre class="code">Lucario(config)#crypto ipsec transform-set TS_PR esp-aes 256 esp-sha-hmac
+Lucario(cfg-crypto-trans)#mode tunnel
+Lucario(cfg-crypto-trans)#exit</pre>
+
+<p>
+Pe <strong>Machop</strong>:
+</p>
+<pre class="code">Machop(config)#crypto ipsec transform-set TS_PR esp-aes 256 esp-sha-hmac
+Machop(cfg-crypto-trans)#mode tunnel
+Machop(cfg-crypto-trans)#exit</pre>
+</div></div>
+
+<p>
+7. [20p] Creați câte un <abbr title="Access Control List">ACL</abbr> pe Lucario și Machop care să facă match pe traficul ce urmează să fie criptat (traficul dintre Lo0 Lucario - Lo0 Machop).
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 09. GRE și IPsec [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;">Pe <strong>Lucario</strong>:
+<pre class="code">Lucario(config)#ip access-list extended INTERESTING
+Lucario(config-ext-nacl)#permit ip host 10.10.10.1 host 20.20.20.1
+Lucario(config-ext-nacl)#exit</pre>
+
+<p>
+Pe <strong>Machop</strong>:
+</p>
+<pre class="code">Machop(config)#ip access-list extended INTERESTING
+Machop(config-ext-nacl)#permit ip host 20.20.20.1 host 10.10.10.1
+Machop(config-ext-nacl)#exit</pre>
+</div></div>
+
+<p>
+8. [10p] Creați un crypto map pe Lucario și Machop. Aveți în vedere următoarele aspecte:
+</p>
+<ul>
+<li class="level1"><div class="li"> crypto map-ul trebuie să selecteze traficul conform <abbr title="Access Control List">ACL</abbr>-ului</div>
+</li>
+<li class="level1"><div class="li"> folosiți interfețele fizice drept capetele tunelului IPsec </div>
+</li>
+<li class="level1"><div class="li"> folosiți transform set-ul configurat anterior</div>
+</li>
+</ul>
+
+<p>
+Aplicați crypto map-ul pe interfețele fizice de pe Lucario și Machop.
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 09. GRE și IPsec [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;">Pe <strong>Lucario</strong>:
+<pre class="code">Lucario(config)#crypto map TUNNEL_MAP 10 ipsec-isakmp
+% NOTE: This new crypto map will remain disabled until a peer
+        and a valid access list have been configured.
+Lucario(config-crypto-map)#set peer 191.105.157.2
+Lucario(config-crypto-map)#match address INTERESTING
+Lucario(config-crypto-map)#set transform-set TS_PR
+Lucario(config-crypto-map)#exit
+Lucario(config)#int fa 2/0
+Lucario(config-if)#crypto map TUNNEL_MAP
+Lucario(config-if)#
+*Mar  1 00:22:02.835: %CRYPTO-6-ISAKMP_ON_OFF: ISAKMP is ON
+Lucario(config-if)#exit</pre>
+
+<p>
+Pe <strong>Machop</strong>:
+</p>
+<pre class="code">Machop(config)#crypto map TUNNEL_MAP 10 ipsec-isakmp
+% NOTE: This new crypto map will remain disabled until a peer
+        and a valid access list have been configured.
+Machop(config-crypto-map)#set peer 66.218.168.5         
+Machop(config-crypto-map)#match address INTERESTING
+Machop(config-crypto-map)#set transform-set TS_PR
+Machop(config-crypto-map)#exit
+Machop(config)#int fa1/0
+Machop(config-if)#crypto map TUNNEL_MAP
+Machop(config-if)#
+*Mar  1 00:22:15.719: %CRYPTO-6-ISAKMP_ON_OFF: ISAKMP is ON
+Machop(config-if)#exit</pre>
+</div></div>
+
+<p>
+9. [10p] Testați tunelul generând trafic între Lo0 de pe Lucario și Lo0 de pe Machop. Afișați SA-urile create și verificați incrementarea contoarelor de trafic.
+</p><p></p><div class="noteimportant">
+Pentru ca acest exercițiu să funcționeze trebuie adăugate și niște rute. Pe ce rutere și de ce?
+
+</div><p></p>
+<p></p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 09. GRE și IPsec [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;">Ne lipsesc niște rute:
+<pre class="code">Lucario(config)#ip route 20.20.20.1 255.255.255.255 66.218.168.6</pre>
+<pre class="code">Machop(config)#ip route 10.10.10.1 255.255.255.255 191.105.157.1</pre>
+<pre class="code">Lucario#ping 20.20.20.1 source 10.10.10.1
+
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 20.20.20.1, timeout is 2 seconds:
+Packet sent with a source address of 10.10.10.1 
+.!!!!
+Success rate is 80 percent (4/5), round-trip min/avg/max = 36/45/52 ms
+</pre>
+<pre class="code">R3(config-if)#crypto map TUNNEL_MAP
+R3
+Construct an access-list that will match the traffic that you want to encrypt. 
+  * The access-list will have to define both the source and the destination of the traffic. 
+  * An access-list must be defined on both R1 and R3. 
+  * Watch out for the fact that the 2 ACLs must mirror each other. 
+  * The access-list can match all IP traffic(config-if)#
+*Jan 14 20:24:31.351: %CRYPTO-6-ISAKMP_ON_OFF: ISAKMP is ON
+R3(config-if)#exit</pre>
+
+<p>
+Create traffic to start tunnel setup:
+</p>
+<pre class="code">R1#ping 10.3.3.3 source 10.1.1.1
+Translating "10.3.3.3"
+
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 10.3.3.3, timeout is 2 seconds:
+Packet sent with a source address of 10.1.1.1 
+.!!!!
+Success rate is 80 percent (4/5), round-trip min/avg/max = 12/14/20 ms</pre>
+
+<p>
+Check security associations:
+</p>
+<pre class="code">R1#show crypto isakmp sa
+IPv4 Crypto ISAKMP SA
+dst             src             state          conn-id slot status
+192.168.23.3    192.168.12.1    QM_IDLE           1001    0 ACTIVE
+
+IPv6 Crypto ISAKMP SA
+
+R1#show crypto ipsec sa
+
+interface: FastEthernet0/0
+    Crypto map tag: TUNNEL_MAP, local addr 192.168.12.1
+
+   protected vrf: (none)
+   local  ident (addr/mask/prot/port): (10.1.1.1/255.255.255.255/0/0)
+   remote ident (addr/mask/prot/port): (10.3.3.3/255.255.255.255/0/0)
+   current_peer 192.168.23.3 port 500
+     PERMIT, flags={origin_is_acl,}
+    #pkts encaps: 4, #pkts encrypt: 4, #pkts digest: 4
+    #pkts decaps: 4, #pkts decrypt: 4, #pkts verify: 4
+    #pkts compressed: 0, #pkts decompressed: 0
+    #pkts not compressed: 0, #pkts compr. failed: 0
+    #pkts not decompressed: 0, #pkts decompress failed: 0
+    #send errors 1, #recv errors 0
+
+     local crypto endpt.: 192.168.12.1, remote crypto endpt.: 192.168.23.3
+     path mtu 1500, ip mtu 1500, ip mtu idb FastEthernet0/0
+     current outbound spi: 0xD480DB37(3565214519)
+
+     inbound esp sas:
+      spi: 0xB3825B11(3011664657)
+        transform: esp-256-aes esp-sha-hmac ,
+        in use settings ={Tunnel, }
+        conn id: 1, flow_id: SW:1, crypto map: TUNNEL_MAP
+        sa timing: remaining key lifetime (k/sec): (4558528/3557)
+        IV size: 16 bytes
+        replay detection support: Y
+        Status: ACTIVE
+
+     inbound ah sas:
+
+     inbound pcp sas:
+
+     outbound esp sas:
+      spi: 0xD480DB37(3565214519)
+        transform: esp-256-aes esp-sha-hmac ,
+        in use settings ={Tunnel, }
+        conn id: 2, flow_id: SW:2, crypto map: TUNNEL_MAP
+        sa timing: remaining key lifetime (k/sec): (4558528/3555)
+        IV size: 16 bytes
+        replay detection support: Y
+        Status: ACTIVE
+
+     outbound ah sas:
+
+     outbound pcp sas:</pre>
+</div></div>
+
+<p>
+10. [10p] Folosind Wireshark, interceptați traficul criptat dintre Lucario și Machop.
+</p>
+
+<p>
+</p><p></p><div class="noteclassic">
+<p></p>
+<ul>
+<li class="level1"><div class="li"> Folosiți comanda <code>capture</code> din consola <strong>dynagen</strong> pentru a porni o captură</div>
+</li>
+<li class="level1"><div class="li"> Generați trafic ce trece prin tunel</div>
+</li>
+<li class="level1"><div class="li"> Opriți captura de trafic din consola dynagen</div>
+</li>
+<li class="level1"><div class="li"> Deschideți fișierul de captură rezultat folosind Wireshark</div>
+</li>
+</ul>
+
+<p>
+
+</p></div><p></p>
+<p></p>
+
+</div>
+
+        </div>
+        <div class="right_sidebar">
+          <form action="https://ocw.cs.pub.ro/courses/start" accept-charset="utf-8" class="search" id="dw__search" method="get"><div class="no"><input type="hidden" name="do" value="search"><input type="text" id="qsearch__in" accesskey="f" name="id" class="edit" title="[F]"><input type="submit" value="Search" class="button" title="Search"><div id="qsearch__out" class="ajax_qsearch JSpopup" style="display: none;"></div></div></form>          <div class="namespace_sidebar sidebar_box">
+
+<h1 class="sectionedit1" id="laboratoare">Laboratoare</h1>
+<div class="level1">
+
+<div><div id="nojs_indexmenu_55326897959c8a62561e67" data-jsajax="" class="indexmenu_nojs">
+
+<ul class="idx">
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/01" class="wikilink1" title="pr:laboratoare:01">Laboratorul 01. Introducere</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/02" class="wikilink1" title="pr:laboratoare:02">Laboratorul 02. IPv6</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/03" class="wikilink1" title="pr:laboratoare:03">Laboratorul 03. OSPF</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/04" class="wikilink1" title="pr:laboratoare:04">Laboratorul 04. OSPF (2)</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/05" class="wikilink1" title="pr:laboratoare:05">Laboratorul 05. ACL-uri</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/06" class="wikilink1" title="pr:laboratoare:06">Laboratorul 06. Optimizarea rutării</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/07" class="wikilink1" title="pr:laboratoare:07">Laboratorul 07. BGP (1)</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/08" class="wikilink1" title="pr:laboratoare:08">Laboratorul 08. BGP (2)</a></div></li>
+<li class="level1"><div class="li"><span class="curid"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/09" class="wikilink1" title="pr:laboratoare:09">Laboratorul 09. GRE și IPsec</a></span></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/10" class="wikilink1" title="pr:laboratoare:10">Laboratorul 10. Recapitulare</a></div></li>
+</ul>
+</div></div>
+
+</div>
+<!-- EDIT1 SECTION "Laboratoare" [1-59] -->
+<h1 class="sectionedit2" id="resurse">Resurse</h1>
+<div class="level1">
+
+</div>
+<!-- EDIT2 SECTION "Resurse" [60-] -->
+</div>
+<div class="toc_sidebar sidebar_box">
+<!-- TOC START -->
+<div id="sb__right__dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level2"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/09#laboratorul_09_gre_si_ipsec">Laboratorul 09. GRE și IPsec</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/09#topologie">Topologie</a></div></li>
+<li class="level3"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/09#cerinte">Cerințe</a></div>
+<ul class="toc">
+<li class="level4"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/09#setup">Setup</a></div></li>
+<li class="level4"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/09#exercitii">Exerciții</a></div></li>
+</ul>
+</li>
+<li class="level3"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/09#gre">GRE</a></div></li>
+<li class="level3"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/09#ipsec">IPSec</a></div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+</div>
+        </div>
+      
+    
+      <div class="stylefoot">
+        <div class="meta">
+          <div class="user">
+                    </div>
+          <div class="doc">
+          pr/laboratoare/09.txt · Last modified: 2017/01/17 10:55 by sergiu.costea          </div>
+        </div>
+      </div>
+
+    <div class="clearer"></div>
+
+    
+                <div class="bar" id="bar__bottom">
+      <div class="bar-left">
+        <a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/09?do=revisions" class="action revs" accesskey="o" rel="nofollow" title="Old revisions [O]">Old revisions</a>      </div>
+      <div class="bar-right">
+        <a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/09?do=media&amp;ns=pr%3Alaboratoare" class="action media" rel="nofollow" title="Media Manager">Media Manager</a><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/09#dokuwiki__top" class="action top" accesskey="t" rel="nofollow" title="Back to top [T]">Back to top</a>      </div>
+    </div>
+    <div class="clearer"></div>
+            
+    <div align="center" class="footerinc">
+  <div class="license"><a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img src="./Laboratorul 09. GRE și IPsec [CS Open CourseWare]_files/cc-by-sa.png" alt="CC Attribution-Share Alike 3.0 Unported"></a></div>
+  <a target="_blank" href="http://www.chimeric.de/" title="www.chimeric.de"><img src="./Laboratorul 09. GRE și IPsec [CS Open CourseWare]_files/button-chimeric-de.png" width="80" height="15" alt="www.chimeric.de" border="0"></a>
+
+  <a target="_blank" href="http://jigsaw.w3.org/css-validator/check/referer" title="Valid CSS"><img src="./Laboratorul 09. GRE și IPsec [CS Open CourseWare]_files/button-css.png" width="80" height="15" alt="Valid CSS" border="0"></a>
+
+  <a target="_blank" href="http://wiki.splitbrain.org/wiki:dokuwiki" title="Driven by DokuWiki"><img src="./Laboratorul 09. GRE și IPsec [CS Open CourseWare]_files/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" border="0"></a>
+
+  <a target="_blank" href="http://www.firefox-browser.de/" title="do yourself a favour and use a real browser - get firefox"><img src="./Laboratorul 09. GRE și IPsec [CS Open CourseWare]_files/button-firefox.png" width="80" height="15" alt="do yourself a favour and use a real browser - get firefox!!" border="0"></a>
+  
+  <a target="_blank" href="https://ocw.cs.pub.ro/courses/feed.php" title="Recent changes RSS feed"><img src="./Laboratorul 09. GRE și IPsec [CS Open CourseWare]_files/button-rss.png" width="80" height="15" alt="Recent changes RSS feed" border="0"></a>
+
+  <a target="_blank" href="http://validator.w3.org/check/referer" title="Valid XHTML 1.0"><img src="./Laboratorul 09. GRE și IPsec [CS Open CourseWare]_files/button-xhtml.png" width="80" height="15" alt="Valid XHTML 1.0" border="0"></a>
+</div>
+
+  </div>
+</div>
+
+<div class="no"><img src="./Laboratorul 09. GRE și IPsec [CS Open CourseWare]_files/indexer.php" width="2" height="1" alt=""></div>
+
+
+</body></html>

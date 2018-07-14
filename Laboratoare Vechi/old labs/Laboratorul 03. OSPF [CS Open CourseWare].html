@@ -1,0 +1,610 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0047)https://ocw.cs.pub.ro/courses/pr/laboratoare/03 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>
+    Laboratorul 03. OSPF    [CS Open CourseWare]
+  </title>
+
+  <meta name="generator" content="DokuWiki">
+<meta name="robots" content="index,follow">
+<meta name="date" content="2017-01-17T10:54:18+0200">
+<meta name="keywords" content="pr,laboratoare,03">
+<link rel="search" type="application/opensearchdescription+xml" href="https://ocw.cs.pub.ro/courses/lib/exe/opensearch.php" title="CS Open CourseWare">
+<link rel="start" href="https://ocw.cs.pub.ro/courses/">
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://ocw.cs.pub.ro/courses/feed.php">
+<link rel="alternate" type="application/rss+xml" title="Current Namespace" href="https://ocw.cs.pub.ro/courses/feed.php?mode=list&amp;ns=pr:laboratoare">
+<link rel="alternate" type="text/html" title="Plain HTML" href="https://ocw.cs.pub.ro/courses/_export/xhtml/pr/laboratoare/03">
+<link rel="canonical" href="http://ocw.cs.pub.ro/courses/pr/laboratoare/03">
+<link rel="stylesheet" type="text/css" href="./Laboratorul 03. OSPF [CS Open CourseWare]_files/css.php">
+<script type="text/javascript">/*<![CDATA[*/var NS='pr:laboratoare';var JSINFO = {"id":"pr:laboratoare:03","namespace":"pr:laboratoare","isadmin":0,"isauth":0};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="./Laboratorul 03. OSPF [CS Open CourseWare]_files/js.php"></script>
+<script type="text/x-mathjax-config;executed=true">/*<![CDATA[*/MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+        displayMath: [ ["$$","$$"], ["\\[","\\]"] ],
+        processEscapes: true
+    }
+});
+/*!]]>*/</script>
+<script src="./Laboratorul 03. OSPF [CS Open CourseWare]_files/MathJax.js.download" id=""></script>
+<script type="text/javascript">/*<![CDATA[*/
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		  
+/*!]]>*/</script><script src="./Laboratorul 03. OSPF [CS Open CourseWare]_files/ga.js.download" type="text/javascript"></script>
+<script type="text/javascript">/*<![CDATA[*/
+var pageTracker = _gat._getTracker("UA-38383934-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+		  
+/*!]]>*/</script>
+
+  <link rel="shortcut icon" href="https://ocw.cs.pub.ro/courses/lib/tpl/arctic/images/favicon.ico">
+
+  
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body><div id="MathJax_Message" style="display: none;"></div>
+<div id="wrapper" class="show">
+  <div class="dokuwiki">
+
+    
+    <div class="stylehead">
+      <div class="header">
+        <div class="pagename">
+          <a href="https://ocw.cs.pub.ro/courses/pr/"><img height="70" src="./Laboratorul 03. OSPF [CS Open CourseWare]_files/sigla_pr.png"> </a>        </div>
+        <div class="logo">
+          <a style="color: #AAA !important;" href="https://ocw.cs.pub.ro/courses/systems/"><img height="70" src="./Laboratorul 03. OSPF [CS Open CourseWare]_files/systems.png" name="dokuwiki__top"></a>        </div>
+      </div>
+    
+       
+      <div class="breadcrumbs">
+              </div>
+      
+            </div>
+
+                  <div class="bar" id="bar__top">
+        <div class="bar-left">
+                  </div>
+        <div class="bar-right">
+          <a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/03?do=recent" class="action recent" accesskey="r" rel="nofollow" title="Recent changes [R]">Recent changes</a><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/03?do=login&amp;sectok=ef1d3ac6a545396b85c4b4754dfe2228" class="action login" rel="nofollow" title="Login">Login</a>        </div>
+    </div>
+        
+    
+    
+    
+              <div class="left_page">
+          
+<h2 class="sectionedit1" id="laboratorul_03_ospf">Laboratorul 03. OSPF</h2>
+<div class="level2">
+
+</div>
+
+<h3 class="sectionedit2" id="motivatie">1. Motivație</h3>
+<div class="level3">
+
+<p>
+După achiziționarea unui nou sediu vă confruntați cu provocarea configurării protocolului OSPF. Pentru că doriți să asigurați o implementare scalabilă ați ales implementarea Multi-Area OSPF.
+</p>
+
+</div>
+
+<h3 class="sectionedit3" id="topologie">2. Topologie</h3>
+<div class="level3">
+
+<p>
+<a href="https://ocw.cs.pub.ro/courses/_detail/pr/laboratoare/lab3_topology.png?id=pr%3Alaboratoare%3A03" class="media" title="pr:laboratoare:lab3_topology.png"><img src="./Laboratorul 03. OSPF [CS Open CourseWare]_files/lab3_topology.png" class="mediacenter" alt="" width="600"></a>
+</p>
+
+</div>
+
+<h3 class="sectionedit4" id="cerinte">3. Cerințe</h3>
+<div class="level3">
+
+<p>
+</p><p></p><div class="noteimportant"> Descărcați configurațiile inițiale de <a href="https://ocw.cs.pub.ro/courses/_media/pr/laboratoare/02_initial_configs.zip" class="media mediafile mf_zip" title="pr:laboratoare:02_initial_configs.zip (2.9 KB)">aici</a>. 
+</div><p></p>
+<p></p>
+
+<p>
+Atenție: de fiecare dată când vi se cere să salvați configurațiile ruterelor în initial_configs, trebuie să:
+</p>
+<ul>
+<li class="level1"><div class="li"> Dați comanda <code>wr</code> pe toate ruterele</div>
+</li>
+<li class="level1"><div class="li"> În console dynagen dați comanda (fără <code>[]</code>):</div>
+</li>
+</ul>
+<pre class="code">export /all [cale_absolută_către_directorul_initial_configs]</pre>
+
+<p>
+<strong> 1. [5p] </strong> Toate adresele IP au fost configurate pe interfețele fizice. Configurați pe fiecare ruter o interfață de loopback urmărind tabelul de mai jos. Atenție, IP-ul de pe loopback va fi automat setat de OSPF ca RID în taskurile ce urmează:
+</p>
+<div class="table sectionedit5"><table class="inline">
+	<tbody><tr class="row0">
+		<th class="col0"> Numele ruterului </th><th class="col1"> Adresa de pe Loopback0 </th>
+	</tr>
+	<tr class="row1">
+		<td class="col0 centeralign">  Eevvee  </td><td class="col1 centeralign">  150.1.1.1/32  </td>
+	</tr>
+	<tr class="row2">
+		<td class="col0 centeralign">  Gengar  </td><td class="col1 centeralign">  150.1.2.1/32  </td>
+	</tr>
+	<tr class="row3">
+		<td class="col0 centeralign">  Charizard  </td><td class="col1 centeralign">  150.1.3.1/32  </td>
+	</tr>
+	<tr class="row4">
+		<td class="col0 centeralign">  Lugia  </td><td class="col1 centeralign">  150.1.4.1/32  </td>
+	</tr>
+	<tr class="row5">
+		<td class="col0 centeralign">  Gyarados  </td><td class="col1 centeralign">  150.1.5.1/32  </td>
+	</tr>
+</tbody></table></div>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 03. OSPF [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">Eevvee(config)#int lo0
+Eevvee(config-if)#ip addr 150.1.1.1 255.255.255.25</pre>
+<pre class="code">Gengar(config)#int lo0
+Gengar(config-if)#ip addr 150.1.2.1 255.255.255.255</pre>
+<pre class="code">Charizard(config)#int lo0
+Charizard(config-if)#ip addr 150.1.3.1 255.255.255.255</pre>
+<pre class="code">Lugia(config)#int lo0
+Lugia(config-if)#ip addr 150.1.4.1 255.255.255.255</pre>
+<pre class="code">Gyarados(config)#int lo0
+Gyarados(config-if)#ip addr 150.1.5.1 255.255.255.255</pre>
+</div></div>
+
+<p>
+<strong> 2. [5p] </strong> Configurați OSPF area 0 între <em>Gengar</em> și <em>Eevvee</em>. Verificați formarea de adiacențe între cele 2 rutere. Care este comanda care verifică formarea adiacențelor?
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 03. OSPF [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">Gengar(config)#router ospf 1
+Gengar(config-router)#network 172.1.231.0 0.0.0.3 area 0</pre>
+<pre class="code">Eevvee(config)#router ospf 1
+Eevvee(config-router)#network 172.1.231.0 0.0.0.3 area 0</pre>
+<pre class="code">Gengar(config)#do sh ip ospf neigh
+
+Neighbor ID     Pri   State           Dead Time   Address        Interface
+150.1.1.1       1   FULL/DR         00:00:38    172.1.231.1    Ethernet2/1</pre>
+</div></div>
+
+<p>
+<strong> 3. [10p] </strong> Configurați link-ul dintre <em>Gengar</em> și <em>Eevvee</em> astfel încât <em>Gengar</em> să nu participe la alegerea DR-ului iar Eevvee să devină întotdeauna DR (presupunând că vor fi adăugate pe același segment mai multe rutere cu configurații OSPF implicită).
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 03. OSPF [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">Gengar(config-router)#int eth2/1
+Gengar(config-if)#ip ospf priority 0</pre>
+<pre class="code">Eevvee(config)#int eth2/1
+Eevvee(config-if)#ip ospf priority 255</pre>
+<pre class="code">Gengar(config)#do sh ip ospf neigh
+
+Neighbor ID     Pri   State           Dead Time   Address        Interface
+150.1.1.1       255   FULL/DR         00:00:38    172.1.231.1  Ethernet2/1
+Eevvee(config)#do sh ip ospf neigh
+
+Neighbor ID     Pri   State           Dead Time   Address        Interface
+150.1.6.1         0   FULL/DROTHER    00:00:34    172.1.231.2  Ethernet2/1</pre>
+</div></div>
+
+<p>
+<strong> 4. [5p] </strong> Configurați aria 1 între ruterele <em>Gengar</em>, <em>Lugia</em> și <em>Charizard</em>. Verificați formarea adiacențelor între cele 3 rutere. Care sunt RID-urile folosite de fiecare ruter? Identificați ruterul care a fost ales DR și ruterul care a fost ales BDR. Salvați configurațiile de pe rutere în initial_configs.
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 03. OSPF [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">Lugia(config)#router ospf 1
+Lugia(config-router)#net 10.10.211.0 0.0.0.7 area 1
+Lugia(config-router)#do write</pre>
+<pre class="code">Gengar(config)#router ospf 1
+Gengar(config-router)#net 10.10.211.0 0.0.0.7 area 1
+Gengar(config-router)#do write</pre>
+<pre class="code">Charizard(config)#router ospf 1
+Charizard(config-router)#net 10.10.211.0 0.0.0.7 area 1
+Charizard(config-router)#do write</pre>
+<pre class="code">=&gt; export /all initial_configs</pre>
+
+<p>
+Aflarea DR, BDR în două feluri:
+</p>
+<pre class="code">Gengar(config-router)#do sh ip ospf neigh
+
+Neighbor ID   Pri  State         Dead Time   Address      Interface
+150.1.1.1     255  FULL/DR       00:00:32    172.1.231.1  Ethernet2/1
+150.1.3.1       1  FULL/BDR      00:00:36    10.10.211.3  FastEthernet0/0
+150.1.4.1       1  FULL/DR       00:00:36    10.10.211.1  FastEthernet0/0</pre>
+<pre class="code">Gengar(config-router)#do sh ip ospf interface fa0/0 | include Design
+Designated Router (ID) 150.1.4.1, Interface address 10.10.211.1
+Backup Designated router (ID) 150.1.3.1, Interface address 10.10.211.3
+Adjacent with neighbor 150.1.3.1 (Backup Designated Router)
+Adjacent with neighbor 150.1.4.1 (Designated Router)</pre>
+
+<p>
+150.1.4.1(Lugia) este DR; 150.1.3.1(Charizard) este BDR; Gengar rămâne în consecință DROther.
+</p>
+</div></div>
+
+<p>
+<strong> 5. [10p] </strong> Reconfigurați cele 3 rutere de pe segmentul ariei 1, astfel încât ruterul care este în acest moment în starea DROTHER, să devină DR, iar ruterul care este în acest moment DR, să devină BDR. Nu modificați prioritatea OSPF pentru a rezolva acest task. Este permisă modificarea RID-urilor.
+</p><p></p><div class="noteimportant">Atenție: în dynagen nu funcționează comanda „reload”. Dacă aveți nevoie să restartați ruterele, dați stop și apoi start.
+</div><p></p>
+<p></p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 03. OSPF [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;">Router ID-uri curente: 
+- Gengar: 150.1.2.1 (DROther) 
+- Charizard: 150.1.3.1 (BDR) 
+- Lugia: 150.1.4.1 (DR) 
+Gengar trebuie să devină DR. În acest sens, vom modifica router ID-ul său astfel încât să fie mai mare decât al lui Charizard și Lugia.
+Lugia, fost DR va deveni automat BDR deoarece dintre el și Charizard, Lugia are router-ID-ul maxim.<pre class="code">Gengar(config)#router ospf 1
+Gengar(config-router)#router-id 150.1.6.1
+Reload or use "clear ip ospf process" command, for this to take effect
+Gengar(config-router)#do clear ip ospf proc
+Reset ALL OSPF processes? [no]: yes</pre>
+<pre class="code">Lugia(config-router)#do clear ip ospf proc
+Reset ALL OSPF processes? [no]: yes</pre>
+<pre class="code">Charizard(config)#do clear ip ospf proc
+Reset ALL OSPF processes? [no]: yes</pre>
+<pre class="code">Charizard(config)#do sh ip ospf neigh
+Neighbor ID    Pri  State      Dead Time   Address       Interface
+150.1.4.1        1  2WAY/DROTHER 00:00:30    10.10.211.1   FastEthernet0/0
+150.1.6.1        1  2WAY/DROTHER 00:00:32    10.10.211.6   FastEthernet0/0
+
+Charizard(config)#do sh ip ospf neigh
+Neighbor ID     Pri  State      Dead Time   Address       Interface
+150.1.4.1         1  FULL/BDR   00:00:30    10.10.211.1   FastEthernet0/0
+150.1.6.1         1  FULL/DR    00:00:32    10.10.211.6   FastEthernet0/0</pre>
+</div></div>
+
+<p>
+<strong> 6. [10p] </strong> Activați <strong>OSPF aria 1</strong> pe Loopback-ul lui <em>Gengar</em>. Verificați tabela de rutare pe ruterul <em>Lugia</em>. Ce rețele OSPF cunoaște acest ruter și ce cod (identificatorul din stanga rutei) au aceste rețele?
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 03. OSPF [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">Gengar(config)#router ospf 1
+Gengar(config-router)#net 150.1.2.1 0.0.0.0 area 1</pre>
+<pre class="code">Lugia#sh ip route
+[...]
+O IA 172.1.231.0 [110/11] via 10.10.211.6, 00:02:16, FastEthernet0/0
+[...]
+O 150.1.2.1 [110/2] via 10.10.211.6, 00:02:16, FastEthernet0/0</pre>
+
+<p>
+Rutele învățate prin OSPF de <em>Lugia</em> au identificatorul O. Prima rută a lui <em>Lugia</em> are și <em>IA</em> (Inter-Area) deoarece reprezintă o rețea introdusă în OSPF într-o altă arie (aria 0) decât cea din care face parte Lugia (area 1).
+</p>
+</div></div>
+
+<p>
+<strong> 7. [25p] </strong> Introduceți în OSPF:
+</p>
+<ul>
+<li class="level1"><div class="li"> rețeaua de pe Loopback-ul lui <em>Charizard</em> ca rută externă ariei 1 cu cost cumulativ</div>
+</li>
+<li class="level1"><div class="li"> rețeaua de pe Loopback-ul lui <em>Lugia</em> ca rută externă ariei 1 cu cost inițial de 40, fără cost cumulativ</div>
+</li>
+<li class="level1"><div class="li"> rețeaua de pe Loopback-ul lui <em>Eevvee</em> ca rută externă ariei 0 cu parametrii impliciți</div>
+</li>
+</ul>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 03. OSPF [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">Charizard(config)#router ospf 1
+Charizard(config-router)#redistribute connected metric-type 1
+% Only classful networks will be redistributed
+Charizard(config-router)#redistribute connected metric-type 1 ?
+subnets Consider subnets for redistribution into OSPF
+[...]
+Charizard(config-router)#redistribute connected metric-type 1 subnets</pre>
+<pre class="code">Lugia(config)#router ospf 1
+Lugia(config-router)#redistribute connected metric 40 subnets</pre>
+<pre class="code">Eevvee(config)#router ospf 1
+Eevvee(config-router)#redistribute connected subnets</pre>
+</div></div>
+
+<p>
+<strong> 8. [10p] </strong> Vizualizați tabela de rutare pe ruterul <em>Gengar</em>. Răspundeți asistentului la următoarele întrebări:
+</p>
+<ul>
+<li class="level1"><div class="li"> Ce cost are rețeaua care identifică loopback-ul lui <em>Eevvee</em>? De ce are acest cost?</div>
+</li>
+<li class="level1"><div class="li"> Ce coduri (identificatorul din stanga rutei) au cele 3 loopback-uri care au fost injectate în OSPF?</div>
+</li>
+<li class="level1"><div class="li"> Ce cost are rețeaua care identifică loopbackul lui <em>Charizard</em>? De ce are acest cost și cum a fost calculat?</div>
+</li>
+<li class="level1"><div class="li"> Ce cost are rețeaua care identifică loopback-ul lui <em>Lugia</em>?</div>
+</li>
+</ul>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 03. OSPF [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">Gengar#sh ip route
+[...]
+150.1.0.0/32 is subnetted, 4 subnets
+O E2 150.1.4.1 [110/40] via 10.10.211.1, 00:02:09, FastEthernet0/0
+O E1 150.1.3.1 [110/21] via 10.10.211.3, 00:02:09, FastEthernet0/0
+O E2 150.1.1.1 [110/20] via 172.1.231.1, 00:01:24, Ethernet2/1</pre>
+<ul>
+<li class="level1"><div class="li"> Ruta injectată de <em>Lugia</em>, 150.1.4.1 are codul E2 (implicit pentru comanda de redistribuire, fără cost cumulativ) și metrica 40 setată în comanda de restribuire de la exercițiul anterior. </div>
+</li>
+<li class="level1"><div class="li"> Ruta injectată de <em>Charizard</em>, 150.1.3.1 are codul E1 (deoarece a fost setat explicit), adică este o rută cu cost cumulativ. Costul său provine din costul inițial implicit al rutelor redistribuite - 20, la care se adaugă costul legăturii lui <em>Gengar</em> către vecinul de la care a aflat ruta și anume costul 1 implicit pentru o interfață FastEthernet. Verificarea costului OSPF pe interfața Fa0/0 a lui <em>Gengar</em> se face cu comanda “show ip ospf interface Fa0/0”.</div>
+</li>
+<li class="level1"><div class="li"> Ruta injectată de <em>Eevvee</em>, 150.1.1.1, are parametrii impliciți: este o rută externă de tip E2(fără cost cumulativ) cu metrica 20.</div>
+</li>
+</ul>
+</div></div>
+
+<p>
+<strong> 9. [10p] </strong> Configurați autentificare OSPF în format MD5 între ruterele <em>Gengar</em> și <em>Eevvee</em>.
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 03. OSPF [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">Gengar(config)#interface e2/1
+Gengar(config-if)#ip ospf authentication message-digest
+Gengar(config-if)#ip ospf message-digest 1 md5 cisco</pre>
+<pre class="code">Eevvee(config-router)#interface e2/1
+Eevvee(config-if)#ip ospf authentication message-digest
+Eevvee(config-if)#ip ospf message-digest 1 md5 cisco</pre>
+<pre class="code">Eevvee(config-if)#Ctrl^Z
+Eevvee#debug ip ospf adj
+OSPF adjacency events debugging is on
+Eevvee#
+*Mar 1 01:17:34.451: OSPF: Send with youngest Key 1</pre>
+</div></div>
+
+<p>
+<strong> 10. [10p] </strong> Pe segmentul între <em>Charizard</em> și <em>Gyarados</em> administratorul ce s-a ocupat anterior de rețea a configurat unii parametrii incompatibili pentru adiacența OSPF. Activați <strong>OSPF aria 2</strong> intre cele 2 rutere și rezolvați problemele de adiacență astfel încât cele 2 rutere să ajungă in starea <strong>FULL</strong> de adiacență. După ce ați activat OSPF, folosiți comanda <code>debug ip ospf events</code> pe <em>Gyarados</em> pentru a găsi greșelile. Salvați configurațiile de pe rutere în <code>initial_configs</code>.
+</p>
+
+<p>
+Atenție: orice configurație inițial prezentă pe cele 2 rutere când le-ati pornit poate reprezenta o greseala de configurare făcută de administratorul anterior.
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 03. OSPF [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">Gyarados#sh ip route
+10.0.0.0/29 is subnetted, 1 subnets
+C 10.10.211.168 is directly connected, FastEthernet2/0
+Charizard#sh ip route
+[...]
+10.0.0.0/8 is variably subnetted, 2 subnets, 2 masks
+C 10.10.211.168/30 is directly connected, FastEthernet2/0</pre>
+<ul>
+<li class="level1"><div class="li"> Observăm că <em>Gyarados</em> este configurat cu o mască de rețea diferită de cea indicată în topologia de laborator</div>
+</li>
+</ul>
+<pre class="code">Charizard(config)#router ospf 1
+Charizard(config-router)#net 10.10.211.168 0.0.0.3 area 2</pre>
+<pre class="code">Gyarados(config-if)#interface Fa2/0
+Gyarados(config-if)#ip addr 10.10.211.169 255.255.255.252
+Gyarados(config-if)#router ospf 1
+Gyarados(config-router)#net 10.10.211.168 0.0.0.3 area 2</pre>
+<pre class="code">Gyarados#debug ip ospf events
+OSPF events debugging is on
+*Mar 1 01:30:12.643: OSPF: Mismatched hello parameters from 10.10.211.170
+*Mar 1 01:30:12.647: OSPF: Dead R 80 C 40, Hello R 20 C 10 Mask R 255.255.255.252 C 255.255.255.252
+Gyarados#sh ip ospf interface Fa2/0 | include Hello
+Timer intervals configured, Hello 10, Dead 40, Wait 40, Retransmit 5
+Hello due in 00:00:01
+Charizard#sh ip ospf interface fa2/0 | include Hello
+Timer intervals configured, Hello 20, Dead 80, Wait 80, Retransmit 5
+Hello due in 00:00:11</pre>
+<ul>
+<li class="level1"><div class="li"> Observăm un mismatch de configurație de hello interval între <em>Gyarados</em> și <em>Charizard</em></div>
+</li>
+</ul>
+<pre class="code">Gyarados(config)#interface Fa2/0
+Gyarados(config-if)#ip ospf hello-interval 20
+*Mar 1 01:32:53.115: %OSPF-5-ADJCHG: Process 1, Nbr 150.1.3.1 on FastEthernet2/0 from LOADING to FULL, Loading Done</pre>
+<pre class="code">Gyarados(config-if)#do sh ip ospf neigh
+Neighbor ID Pri State Dead Time Address Interface
+150.1.3.1 1 FULL/BDR 00:01:12 10.10.211.170 FastEthernet2/0</pre>
+</div></div>
+
+</div>
+
+<h3 class="sectionedit6" id="bonus">4. Bonus</h3>
+<div class="level3">
+
+<p>
+<strong> 11. [10p] </strong> Afisați tabela de rutare pe <em>Gyarados</em>. Ce rute OSPF puteți vedea? De ce nu puteți vedea toate rutele OSPF? Configurați rețeaua astfel încât să aveți conectivitate între <strong>aria 2</strong> și restul ariilor OSPF, fără să schimbați configurația ariilor.
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 03. OSPF [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">Gyarados(config-if)#do sh ip route
+[...]
+10.0.0.0/30 is subnetted, 1 subnets
+C 10.10.211.168 is directly connected, FastEthernet2/0
+150.1.0.0/32 is subnetted, 2 subnets
+C 150.1.5.1 is directly connected, Loopback0
+O E1 150.1.3.1 [110/21] via 10.10.211.170, 00:01:26, FastEthernet2/0</pre>
+<pre class="code">Gengar(config)#router ospf 1
+Gengar(config-router)#area 1 virtual-link 150.1.3.1</pre>
+<pre class="code">Charizard(config)#router ospf 1
+Charizard(config-router)#area 1 virtual-link 150.1.6.1</pre>
+<pre class="code">Charizard(config-router)#do sh ip ospf neigh
+Neighbor ID Pri State Dead Time Address Interface
+150.1.6.1 0 FULL/ - - 10.10.211.6 OSPF_VL0
+Gyarados(config-if)#do sh ip route
+[...]
+172.1.0.0/30 is subnetted, 1 subnets
+O IA 172.1.231.0 [110/12] via 10.10.211.170, 00:00:53, FastEthernet2/0
+10.0.0.0/8 is variably subnetted, 2 subnets, 2 masks
+C 10.10.211.168/30 is directly connected, FastEthernet2/0
+O IA 10.10.211.0/29 [110/2] via 10.10.211.170, 00:01:19, FastEthernet2/0
+150.1.0.0/32 is subnetted, 5 subnets
+O E2 150.1.4.1 [110/40] via 10.10.211.170, 00:00:48, FastEthernet2/0
+C 150.1.5.1 is directly connected, Loopback0
+O IA 150.1.2.1 [110/3] via 10.10.211.170, 00:01:19, FastEthernet2/0
+O E1 150.1.3.1 [110/21] via 10.10.211.170, 00:00:48, FastEthernet2/0
+O E2 150.1.1.1 [110/20] via 10.10.211.170, 00:00:48, FastEthernet2/0
+O*E2 0.0.0.0/0 [110/1] via 10.10.211.170, 00:00:48, FastEthernet2/0</pre>
+</div></div>
+
+</div>
+
+        </div>
+        <div class="right_sidebar">
+          <form action="https://ocw.cs.pub.ro/courses/start" accept-charset="utf-8" class="search" id="dw__search" method="get"><div class="no"><input type="hidden" name="do" value="search"><input type="text" id="qsearch__in" accesskey="f" name="id" class="edit" title="[F]"><input type="submit" value="Search" class="button" title="Search"><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>          <div class="namespace_sidebar sidebar_box">
+
+<h1 class="sectionedit1" id="laboratoare">Laboratoare</h1>
+<div class="level1">
+
+<div><div id="nojs_indexmenu_86378840159c8a6862b63b" data-jsajax="" class="indexmenu_nojs">
+
+<ul class="idx">
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/01" class="wikilink1" title="pr:laboratoare:01">Laboratorul 01. Introducere</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/02" class="wikilink1" title="pr:laboratoare:02">Laboratorul 02. IPv6</a></div></li>
+<li class="level1"><div class="li"><span class="curid"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/03" class="wikilink1" title="pr:laboratoare:03">Laboratorul 03. OSPF</a></span></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/04" class="wikilink1" title="pr:laboratoare:04">Laboratorul 04. OSPF (2)</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/05" class="wikilink1" title="pr:laboratoare:05">Laboratorul 05. ACL-uri</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/06" class="wikilink1" title="pr:laboratoare:06">Laboratorul 06. Optimizarea rutării</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/07" class="wikilink1" title="pr:laboratoare:07">Laboratorul 07. BGP (1)</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/08" class="wikilink1" title="pr:laboratoare:08">Laboratorul 08. BGP (2)</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/09" class="wikilink1" title="pr:laboratoare:09">Laboratorul 09. GRE și IPsec</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/10" class="wikilink1" title="pr:laboratoare:10">Laboratorul 10. Recapitulare</a></div></li>
+</ul>
+</div></div>
+
+</div>
+<!-- EDIT1 SECTION "Laboratoare" [1-59] -->
+<h1 class="sectionedit2" id="resurse">Resurse</h1>
+<div class="level1">
+
+</div>
+<!-- EDIT2 SECTION "Resurse" [60-] -->
+</div>
+<div class="toc_sidebar sidebar_box">
+<!-- TOC START -->
+<div id="sb__right__dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level2"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/03#laboratorul_03_ospf">Laboratorul 03. OSPF</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/03#motivatie">1. Motivație</a></div></li>
+<li class="level3"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/03#topologie">2. Topologie</a></div></li>
+<li class="level3"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/03#cerinte">3. Cerințe</a></div></li>
+<li class="level3"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/03#bonus">4. Bonus</a></div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+</div>
+        </div>
+      
+    
+      <div class="stylefoot">
+        <div class="meta">
+          <div class="user">
+                    </div>
+          <div class="doc">
+          pr/laboratoare/03.txt · Last modified: 2017/01/17 10:54 by sergiu.costea          </div>
+        </div>
+      </div>
+
+    <div class="clearer"></div>
+
+    
+                <div class="bar" id="bar__bottom">
+      <div class="bar-left">
+        <a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/03?do=revisions" class="action revs" accesskey="o" rel="nofollow" title="Old revisions [O]">Old revisions</a>      </div>
+      <div class="bar-right">
+        <a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/03?do=media&amp;ns=pr%3Alaboratoare" class="action media" rel="nofollow" title="Media Manager">Media Manager</a><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/03#dokuwiki__top" class="action top" accesskey="t" rel="nofollow" title="Back to top [T]">Back to top</a>      </div>
+    </div>
+    <div class="clearer"></div>
+            
+    <div align="center" class="footerinc">
+  <div class="license"><a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img src="./Laboratorul 03. OSPF [CS Open CourseWare]_files/cc-by-sa.png" alt="CC Attribution-Share Alike 3.0 Unported"></a></div>
+  <a target="_blank" href="http://www.chimeric.de/" title="www.chimeric.de"><img src="./Laboratorul 03. OSPF [CS Open CourseWare]_files/button-chimeric-de.png" width="80" height="15" alt="www.chimeric.de" border="0"></a>
+
+  <a target="_blank" href="http://jigsaw.w3.org/css-validator/check/referer" title="Valid CSS"><img src="./Laboratorul 03. OSPF [CS Open CourseWare]_files/button-css.png" width="80" height="15" alt="Valid CSS" border="0"></a>
+
+  <a target="_blank" href="http://wiki.splitbrain.org/wiki:dokuwiki" title="Driven by DokuWiki"><img src="./Laboratorul 03. OSPF [CS Open CourseWare]_files/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" border="0"></a>
+
+  <a target="_blank" href="http://www.firefox-browser.de/" title="do yourself a favour and use a real browser - get firefox"><img src="./Laboratorul 03. OSPF [CS Open CourseWare]_files/button-firefox.png" width="80" height="15" alt="do yourself a favour and use a real browser - get firefox!!" border="0"></a>
+  
+  <a target="_blank" href="https://ocw.cs.pub.ro/courses/feed.php" title="Recent changes RSS feed"><img src="./Laboratorul 03. OSPF [CS Open CourseWare]_files/button-rss.png" width="80" height="15" alt="Recent changes RSS feed" border="0"></a>
+
+  <a target="_blank" href="http://validator.w3.org/check/referer" title="Valid XHTML 1.0"><img src="./Laboratorul 03. OSPF [CS Open CourseWare]_files/button-xhtml.png" width="80" height="15" alt="Valid XHTML 1.0" border="0"></a>
+</div>
+
+  </div>
+</div>
+
+<div class="no"><img src="./Laboratorul 03. OSPF [CS Open CourseWare]_files/indexer.php" width="2" height="1" alt=""></div>
+
+
+</body></html>

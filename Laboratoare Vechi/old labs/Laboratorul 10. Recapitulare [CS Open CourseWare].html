@@ -1,0 +1,742 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0047)https://ocw.cs.pub.ro/courses/pr/laboratoare/10 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>
+    Laboratorul 10. Recapitulare    [CS Open CourseWare]
+  </title>
+
+  <meta name="generator" content="DokuWiki">
+<meta name="robots" content="index,follow">
+<meta name="date" content="2017-01-18T15:51:21+0200">
+<meta name="keywords" content="pr,laboratoare,10">
+<link rel="search" type="application/opensearchdescription+xml" href="https://ocw.cs.pub.ro/courses/lib/exe/opensearch.php" title="CS Open CourseWare">
+<link rel="start" href="https://ocw.cs.pub.ro/courses/">
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://ocw.cs.pub.ro/courses/feed.php">
+<link rel="alternate" type="application/rss+xml" title="Current Namespace" href="https://ocw.cs.pub.ro/courses/feed.php?mode=list&amp;ns=pr:laboratoare">
+<link rel="alternate" type="text/html" title="Plain HTML" href="https://ocw.cs.pub.ro/courses/_export/xhtml/pr/laboratoare/10">
+<link rel="canonical" href="http://ocw.cs.pub.ro/courses/pr/laboratoare/10">
+<link rel="stylesheet" type="text/css" href="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/css.php">
+<script type="text/javascript">/*<![CDATA[*/var NS='pr:laboratoare';var JSINFO = {"id":"pr:laboratoare:10","namespace":"pr:laboratoare","isadmin":0,"isauth":0};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/js.php"></script>
+<script type="text/x-mathjax-config;executed=true">/*<![CDATA[*/MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+        displayMath: [ ["$$","$$"], ["\\[","\\]"] ],
+        processEscapes: true
+    }
+});
+/*!]]>*/</script>
+<script src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/MathJax.js.download" id=""></script>
+<script type="text/javascript">/*<![CDATA[*/
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		  
+/*!]]>*/</script><script src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/ga.js.download" type="text/javascript"></script>
+<script type="text/javascript">/*<![CDATA[*/
+var pageTracker = _gat._getTracker("UA-38383934-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+		  
+/*!]]>*/</script>
+
+  <link rel="shortcut icon" href="https://ocw.cs.pub.ro/courses/lib/tpl/arctic/images/favicon.ico">
+
+  
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body><div id="MathJax_Message" style="display: none;"></div>
+<div id="wrapper" class="show">
+  <div class="dokuwiki">
+
+    
+    <div class="stylehead">
+      <div class="header">
+        <div class="pagename">
+          <a href="https://ocw.cs.pub.ro/courses/pr/"><img height="70" src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/sigla_pr.png"> </a>        </div>
+        <div class="logo">
+          <a style="color: #AAA !important;" href="https://ocw.cs.pub.ro/courses/systems/"><img height="70" src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/systems.png" name="dokuwiki__top"></a>        </div>
+      </div>
+    
+       
+      <div class="breadcrumbs">
+              </div>
+      
+            </div>
+
+                  <div class="bar" id="bar__top">
+        <div class="bar-left">
+                  </div>
+        <div class="bar-right">
+          <a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/10?do=recent" class="action recent" accesskey="r" rel="nofollow" title="Recent changes [R]">Recent changes</a><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/10?do=login&amp;sectok=ef1d3ac6a545396b85c4b4754dfe2228" class="action login" rel="nofollow" title="Login">Login</a>        </div>
+    </div>
+        
+    
+    
+    
+              <div class="left_page">
+          
+<h2 class="sectionedit1" id="laboratorul_10_recapitulare">Laboratorul 10. Recapitulare</h2>
+<div class="level2">
+
+</div>
+
+<h3 class="sectionedit2" id="topologie">Topologie</h3>
+<div class="level3">
+
+<p>
+<a href="https://ocw.cs.pub.ro/courses/_detail/pr/laboratoare/10_topologie.png?id=pr%3Alaboratoare%3A10" class="media" title="pr:laboratoare:10_topologie.png"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/10_topologie.png" class="mediacenter" alt=""></a>
+</p>
+
+</div>
+
+<h3 class="sectionedit3" id="cerinte">Cerințe</h3>
+<div class="level3">
+
+</div>
+
+<h4 id="setup">Setup</h4>
+<div class="level4">
+
+<p>
+</p><p></p><div class="noteimportant"> În acest laborator vom folosi un alt fișier de topologie <code>.net</code>.
+<p></p>
+
+<p>
+Descărcați și dezarhivați arhiva de laborator de <a href="https://ocw.cs.pub.ro/courses/_media/pr/laboratoare/10_lab.zip" class="media mediafile mf_zip" title="pr:laboratoare:10_lab.zip (3.6 KB)">aici</a>. Copiați imaginea de IOS în folderul <code>ios/</code>, porniți Dynamips și apoi porniți dynagen folosind fișierul <code>.net</code> din arhivă. 
+</p></div><p></p>
+<p></p>
+
+</div>
+
+<h4 id="exercitii">Exerciții</h4>
+<div class="level4">
+
+</div>
+
+<h3 class="sectionedit4" id="adresare_ip_10p">1. Adresare IP (10p)</h3>
+<div class="level3">
+
+<p>
+<strong>(10p)</strong> Configurați adresele IP ale interfețelor de loopback conform tabelului de mai jos.
+</p>
+<div class="table sectionedit5"><table class="inline">
+	<tbody><tr class="row0">
+		<th class="col0 centeralign">  Ruter  </th><th class="col1 centeralign">  Interfață  </th><th class="col2 centeralign">  Adresă IP  </th>
+	</tr>
+	<tr class="row1">
+		<td class="col0 centeralign">  R1  </td><td class="col1 centeralign">  Lo0  </td><td class="col2 leftalign"> 11.10.1.1/24  </td>
+	</tr>
+	<tr class="row2">
+		<td class="col0 centeralign">  R2  </td><td class="col1 centeralign">  Lo0  </td><td class="col2 leftalign"> 12.14.14.1/24  </td>
+	</tr>
+	<tr class="row3">
+		<td class="col0 centeralign">  R3  </td><td class="col1 centeralign">  Lo0  </td><td class="col2 leftalign"> 13.13.13.1/24  </td>
+	</tr>
+	<tr class="row4">
+		<td class="col0 centeralign">  R4  </td><td class="col1 centeralign">  Lo0  </td><td class="col2 leftalign"> 14.14.14.1/24  </td>
+	</tr>
+	<tr class="row5">
+		<td class="col0 centeralign">  R5  </td><td class="col1 centeralign">  Lo0  </td><td class="col2 leftalign"> 15.12.13.1/26  </td>
+	</tr>
+	<tr class="row6">
+		<td class="col0 centeralign">  R5  </td><td class="col1 centeralign">  Lo1  </td><td class="col2 leftalign"> 15.12.13.65/26  </td>
+	</tr>
+</tbody></table></div>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;">Pe <strong>R1</strong>:
+<pre class="code">int l0
+ ip add 11.10.1.1 255.255.255.0</pre>
+<pre class="code">R1#sh ip int brief
+Interface      IP-Address      OK? Method Status                Protocol
+[…]
+Loopback0      11.10.1.1       YES manual up                    up</pre>
+</div></div>
+
+</div>
+
+<h3 class="sectionedit6" id="ospf_35p">2. OSPF (35p)</h3>
+<div class="level3">
+
+<p>
+<strong>a. (3p)</strong> Configurați OSPF aria 0 pe segmentul Ethernet dintre R2 și R5.  
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">R2#
+router ospf 1
+ network 89.112.25.0 0.0.0.255 area 0</pre>
+<pre class="code">R5#
+router ospf 1
+!
+int e0/1
+ ip ospf 1 area 0</pre>
+<pre class="code">*Mar  1 00:46:06.519: %OSPF-5-ADJCHG: Process 1, Nbr 12.14.14.1 on Ethernet0/1
+rom LOADING to FULL, Loading Done
+R5#sh ip ospf nei
+
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+12.14.14.1        1   FULL/BDR        00:00:37    89.112.25.2     Ethernet0/1</pre>
+</div></div>
+
+<p>
+<strong>b. (4p)</strong> Configurați OSPF aria 1 pe segmentul Serial dintre R1 și R2 și pe interfața de loopback  lo0 a lui R2.  
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">R1#
+router ospf 1
+!
+int se 1/0
+ ip ospf 1 area 1</pre>
+<pre class="code">R2#
+int se 1/0
+ ip ospf 1 area 1
+int l0
+ ip ospf 1 area 1</pre>
+<pre class="code">*Mar  1 01:01:04.835: %OSPF-5-ADJCHG: Process 1, Nbr 12.14.14.1 on Serial1/0 fro
+m LOADING to FULL, Loading Done
+R1#sh ip route ospf
+     89.0.0.0/24 is subnetted, 3 subnets
+O IA    89.112.25.0 [110/74] via 89.112.12.2, 00:00:06, Serial1/0
+     12.0.0.0/32 is subnetted, 1 subnets
+O       12.14.14.1 [110/65] via 89.112.12.2, 00:00:06, Serial1/0</pre>
+</div></div>
+
+<p>
+<strong>c. (4p)</strong> Configurați OSPF aria 2 pe interfața lo0 a lui R1. 
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">R1(config)#int l0
+R1(config-if)#ip ospf 1 area 2
+R1#sh ip ospf database
+
+            OSPF Router with ID (11.10.2.1) (Process ID 1)
+
+                Router Link States (Area 1)
+
+Link ID         ADV Router      Age         Seq#       Checksum Link count
+11.10.2.1       11.10.2.1       455         0x80000002 0x00CFCD 2
+12.14.14.1      12.14.14.1      448         0x80000002 0x00341C 3
+
+                Summary Net Link States (Area 1)
+
+Link ID         ADV Router      Age         Seq#       Checksum
+89.112.25.0     12.14.14.1      456         0x80000001 0x00C561
+
+                Router Link States (Area 2)
+
+Link ID         ADV Router      Age         Seq#       Checksum Link count
+11.10.2.1       11.10.2.1       8           0x80000001 0x00BB2F 1</pre>
+</div></div>
+
+<p>
+<strong>d. (4p)</strong> Configurați rețeaua OSPF astfel încât să aveți ping între R5 și interfața lo0 a lui R1  
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">R2(config-router)#do sh ip route ospf
+     11.0.0.0/32 is subnetted, 1 subnets
+O IA    11.10.1.1 [110/65] via 89.112.12.1, [...] </pre>
+<pre class="code">R2(config-router)#area 1 virtual-link  11.10.2.1</pre>
+<pre class="code">R1(config-router)#area 1 virtual-link 12.14.14.1</pre>
+<pre class="code">R1(config-router)#do sh ip ospf nei
+
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+12.14.14.1        0   FULL/  -           -        89.112.12.2     OSPF_VL0</pre>
+</div></div>
+
+<p>
+<strong>e. (4p)</strong> Configurați rețeaua OSPF astfel încât R2 să fie mereu ales DR pe legătura dintre R2 și R5.  
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">R2#
+int e 0/1
+ ip ospf priority 100
+!
+clear ip ospf 1 process
+Reset OSPF process? [no]: yes</pre>
+<pre class="code">R5#sh ip ospf nei
+
+Neighbor ID     Pri   State           Dead Time   Address         Interface
+12.14.14.1      100   FULL/DR        00:00:35    89.112.25.2     Ethernet0/1</pre>
+</div></div>
+
+<p>
+<strong>f. (4p)</strong> Introduceți în OSPF, ca rute externe cu cost cumulativ, DOAR interfețele lo0 și lo1 ale lui R5. 
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">R5#
+ip access-list standard ACL_OSPF_RED_CONN
+ permit 15.12.13.0 0.0.0.127
+!
+route-map OSPF_RED_CONN
+ match ip address ACL_OSPF_RED_CONN
+!
+router ospf 1
+ redistribute connected subnets route-map OSPF_RED_CONN metric-type 1</pre>
+<pre class="code">R1#sh ip route ospf
+[…]
+     15.0.0.0/26 is subnetted, 2 subnets
+O E1    15.12.13.0 [110/94] via 89.112.12.2, 00:00:01, Serial1/0
+O E1    15.12.13.64 [110/94] via 89.112.12.2, 00:00:01, Serial1/0</pre>
+</div></div>
+
+<p>
+<strong>g. (8p)</strong> Sumarizați rețele de pe lo0 și lo1 ale lui R5.  
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">R5#
+router ospf 1
+ summary-address 15.12.13.0 255.255.255.128</pre>
+<pre class="code">R1(config-router)#do sh ip route ospf
+     89.0.0.0/24 is subnetted, 3 subnets
+O       89.112.25.0 [110/74] via 89.112.12.2, 00:06:29, Serial1/0
+     12.0.0.0/32 is subnetted, 1 subnets
+O       12.14.14.1 [110/65] via 89.112.12.2, 00:34:29, Serial1/0
+     15.0.0.0/8 is variably subnetted, 2 subnets, 2 masks
+O       15.15.15.1/32 [110/75] via 89.112.12.2, 00:06:29, Serial1/0
+O E1    15.12.13.0/25 [110/94] via 89.112.12.2, 00:00:04, Serial1/0</pre>
+</div></div>
+
+<p>
+<strong>h. (4p)</strong> Configurați aria 2 astfel încât această să nu accepte LSA-uri de tip 5. Verificați acest  lucru. 
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">R1(config)#router ospf 1
+R1(config-router)#area 2 stub
+R1#sh ip ospf
+[…]
+    Area 2
+        Number of interfaces in this area is 1 (1 loopback)
+        It is a stub area
+          generates stub default route with cost 1
+        Area has no authentication
+        SPF algorithm last executed 00:02:23.996 ago
+        SPF algorithm executed 7 times
+        Area ranges are
+        Number of LSA 6. Checksum Sum 0x03ADC9
+        Number of opaque link LSA 0. Checksum Sum 0x000000
+        Number of DCbitless LSA 0
+        Number of indication LSA 0
+        Number of DoNotAge LSA 0
+        Flood list length 0</pre>
+</div></div>
+
+</div>
+
+<h3 class="sectionedit7" id="ipv6_20p">3. IPv6 (20p)</h3>
+<div class="level3">
+
+<p>
+<strong> a. (5p)</strong> Configurați adresa 2001:1::1/64 pe interfața lo1 a lui R1. 
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">R1(config)#int l1
+R1(config-if)#ipv6 address 2001:1::1/64</pre>
+</div></div>
+
+<p>
+<strong> b. (5p)</strong> Configurați adresa 2001:2::/64 pe interfața lo2 a lui R5. Ultimii 64 de biți ai adresei trebuie generați folosind metoda EUI-64. 
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">R5(config)#int l2
+R5(config-if)#ipv6 address 2001:2::/64 eui-64</pre>
+</div></div>
+
+<p>
+<strong> c. (10p)</strong> Configurați un tunel MCT între R1 și R5 astfel încât să existe conectivitate între lo1 a lui R1 și lo2 a lui R5. Pentru acest task este permisă folosirea rutelor statice. 
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">R1#sh runn | sec Tunn
+interface Tunnel0
+ no ip address
+ ipv6 address 2001:15::1/64
+ tunnel source Loopback0
+ tunnel destination 15.12.13.1
+ tunnel mode ipv6ip</pre>
+<pre class="code">R5#sh runn | sec Tunn
+interface Tunnel0
+ no ip address
+ ipv6 address 2001:15::5/64
+ tunnel source Loopback0
+ tunnel destination 11.10.1.1
+ tunnel mode ipv6ip</pre>
+<pre class="code">R1(config)#ipv6 route 2001:2::/64 2001:15::5</pre>
+<pre class="code">R5(config)#ipv6 route 2001:1::/64 2001:15::1</pre>
+<pre class="code">R5(config-if)#do sh ipv6 int brief
+[…]
+Loopback2                  [up/up]
+    FE80::CE04:3FF:FE8C:0
+    2001:2::CE04:3FF:FE8C:0</pre>
+<pre class="code">R1#ping 2001:2::CE04:3FF:FE8C:0
+
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 2001:2::CE04:3FF:FE8C:0, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 200/735/1696 ms</pre>
+</div></div>
+
+</div>
+
+<h3 class="sectionedit8" id="route_filtering_10p">4. Route filtering (10p)</h3>
+<div class="level3">
+
+<p>
+<strong>(10p)</strong> Pe R2, filtrați rețeaua 15.12.13.0/26 astfel încât aceasta să nu fie instalată în tabela de rutare. R1 trebuie să aibă în continuare această rețea în tabela sa de rutare.  
+Hint: este posibil să trebuiască să restartați procesul OSPF pentru a vedea diferențele în tabela de rutare. 
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">R2(config)#router ospf 1
+R2(config-router)#distribute-list OSPF_IN in
+R2(config-router)#exit
+R2(config)#ip access-list standard OSPF_IN
+R2(config-std-nacl)#deny 15.12.13.0 0.0.0.127
+R2(config-std-nacl)#permit any
+!
+R2(config-std-nacl)#do sh ip access-list
+Standard IP access list OSPF_IN
+    10 deny   15.12.13.0, wildcard bits 0.0.0.127 (2 matches)
+    20 permit any (3 matches)
+!
+R2(config-std-nacl)#do sh ip route
+[…]
+     11.0.0.0/32 is subnetted, 1 subnets
+O IA    11.10.1.1 [110/65] via 89.112.12.1, 00:00:05, Serial1/0
+     89.0.0.0/24 is subnetted, 3 subnets
+C       89.112.12.0 is directly connected, Serial1/0
+C       89.112.25.0 is directly connected, Ethernet0/1
+C       89.112.23.0 is directly connected, Ethernet0/0
+     12.0.0.0/24 is subnetted, 1 subnets
+C       12.14.14.0 is directly connected, Loopback0
+     15.0.0.0/32 is subnetted, 1 subnets
+O       15.15.15.1 [110/11] via 89.112.25.5, 00:00:05, Ethernet0/1</pre>
+</div></div>
+
+</div>
+
+<h3 class="sectionedit9" id="bgp_35p">5. BGP (35p)</h3>
+<div class="level3">
+
+<p>
+<strong> a. (10p)</strong> Configurați următoarele adiacențe iBGP  în AS-ul 100:
+</p>
+<ul>
+<li class="level1"><div class="li"> R2-R5 – adiacența trebuie realizată peste interfețele de loopback </div>
+</li>
+<li class="level1"><div class="li"> R1-R2 – adiacența trebuie realizată peste interfețele de loopback </div>
+</li>
+</ul>
+
+<p>
+In AS 200:
+</p>
+<ul>
+<li class="level1"><div class="li"> R3-R4 – adiacența trebuie realizată peste interfețele fizice</div>
+</li>
+</ul>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">R2#sh runn | sec bgp
+router bgp 100
+ no synchronization
+ bgp log-neighbor-changes
+ neighbor 15.15.15.1 remote-as 100
+ neighbor 15.15.15.1 update-source Loopback0
+ no auto-summary</pre>
+<pre class="code">R5#sh runn | sec bgp
+router bgp 100
+ no synchronization
+ bgp log-neighbor-changes
+ neighbor 12.14.14.1 remote-as 100
+ neighbor 12.14.14.1 update-source Loopback2
+ no auto-summary</pre>
+<pre class="code">R5#sh ip bgp summ
+BGP router identifier 15.15.15.1, local AS number 100
+BGP table version is 1, main routing table version 1
+
+Neighbor        V    AS MsgRcvd MsgSent   TblVer  InQ OutQ Up/Down  State/PfxRcd
+12.14.14.1      4   100       3       3        1    0    0 00:00:54        0</pre>
+<pre class="code">R2#sh runn | sec bgp
+router bgp 100
+ no synchronization
+ bgp log-neighbor-changes
+ neighbor 11.10.1.1 remote-as 100
+ neighbor 11.10.1.1 update-source Loopback0
+no auto-summary</pre>
+<pre class="code">R1#sh runn | sec bgp
+router bgp 100
+ no synchronization
+ bgp log-neighbor-changes
+ neighbor 12.14.14.1 remote-as 100
+ neighbor 12.14.14.1 update-source Loopback0
+ no auto-summary</pre>
+<pre class="code">R1#sh ip bgp nei
+BGP neighbor is 12.14.14.1,  remote AS 100, internal link
+  BGP version 4, remote router ID 12.14.14.1
+  BGP state = Established, up for 00:03:39</pre>
+<pre class="code">R3#sh runn | sec bgp
+router bgp 200
+ no synchronization
+ bgp log-neighbor-changes
+ neighbor 89.112.34.4 remote-as 200
+ no auto-summary</pre>
+<pre class="code">R4#sh runn | sec bgp
+router bgp 200
+ no synchronization
+ bgp log-neighbor-changes
+ neighbor 89.112.34.3 remote-as 200
+ no auto-summary</pre>
+<pre class="code">R4#sh ip bgp
+
+R4#</pre>
+</div></div>
+
+<p>
+<strong> b. (5p) </strong> Configurați eBGP între R4-R5. Adiacența trebuie realizată direct peste interfețele fizice, fără a folosi interfețe de loopback. 
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">R5(config)#router bgp 100
+R5(config-router)#neigh 89.112.45.4 remote-as 200</pre>
+<pre class="code">R4(config)#router bgp 200
+R4(config-router)#neigh 89.112.45.5 remote-as 100</pre>
+</div></div>
+
+<p>
+<strong> c. (5p) </strong> Configurați eBGP între R2 și R3 folosind interfețele de loopback pentru stabilirea adiacenței. Folosirea rutelor statice este permisă pentru acest task. 
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">R2(config)#ip route 13.13.13.0 255.255.255.0 89.112.23.3
+R2(config)#router bgp 100
+R2(config-router)#neighbor 13.13.13.1 remote-as 200
+R2(config-router)#neighbor 13.13.13.1 update-source l0
+R2(config-router)#neighbor 13.13.13.1 ebgp-multihop 2</pre>
+<pre class="code">R3(config)#ip route 12.14.14.0 255.255.255.0 89.112.23.2
+R3(config)#router bgp 200
+R3(config-router)#neighbor 12.14.14.1 remote-as 100
+R3(config-router)#neighbor 12.14.14.1 update-source l0
+R3(config-router)#neighbor 12.14.14.1 ebgp-multihop 2</pre>
+</div></div>
+
+<p>
+<strong> d. (5p) </strong> Introduceți rețeaua Lo0 a lui R4 în BGP cu codul de origine “?” 
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">R4(config)#route-map BGP_RED_CONN
+R4(config-route-map)#match ip address ACL_BGP_CONN
+R4(config-route-map)#exit
+R4(config)#ip access-list standard ACL_BGP_CONN
+R4(config-std-nacl)#permit 14.14.14.0 0.0.0.255
+R4(config-std-nacl)#exit
+R4(config)#router bgp 200
+R4(config-router)#redistribute connected route-map BGP_RED_CONN</pre>
+<pre class="code">R5#sh ip bgp
+[…]
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+   Network          Next Hop            Metric LocPrf Weight Path
+* i14.14.14.0/24    13.13.13.1               0    100      0 200 ?
+*&gt;                  89.112.45.4              0             0 200 ?</pre>
+</div></div>
+
+<p>
+<strong> e. (10p) </strong> Configurați rețeaua astfel încât R1 să poată da ping din interfața sa de loopback lo0 în interfața lo1 a lui R4. Nu este permisă folosirea rutelor statice. 
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">R3(config-router)#neighbor 89.112.34.4 next-hop-self</pre>
+<pre class="code">R2(config)#router bgp 100
+R2(config-router)#nei  11.10.1.1 next-hop-self</pre>
+<pre class="code">R1(config)#router bgp 100
+R1(config-router)#net
+R1(config-router)#network  11.10.1.0 mask 255.255.255.0</pre>
+<pre class="code">R4#sh ip bgp
+[…]
+   Network          Next Hop            Metric LocPrf Weight Path
+*&gt;i11.10.1.0/24     89.112.34.3              0    100      0 100 i
+*&gt; 14.14.14.0/24    0.0.0.0                  0         32768 ?
+R4#ping 11.10.1.1 source l1
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 11.10.1.1, timeout is 2 seconds:
+Packet sent with a source address of 14.14.14.1
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 56/134/252 ms</pre>
+</div></div>
+
+</div>
+
+        </div>
+        <div class="right_sidebar">
+          <form action="https://ocw.cs.pub.ro/courses/start" accept-charset="utf-8" class="search" id="dw__search" method="get"><div class="no"><input type="hidden" name="do" value="search"><input type="text" id="qsearch__in" accesskey="f" name="id" class="edit" title="[F]"><input type="submit" value="Search" class="button" title="Search"><div id="qsearch__out" class="ajax_qsearch JSpopup" style="display: none;"></div></div></form>          <div class="namespace_sidebar sidebar_box">
+
+<h1 class="sectionedit1" id="laboratoare">Laboratoare</h1>
+<div class="level1">
+
+<div><div id="nojs_indexmenu_30293187159c8a5cd66a02" data-jsajax="" class="indexmenu_nojs">
+
+<ul class="idx">
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/01" class="wikilink1" title="pr:laboratoare:01">Laboratorul 01. Introducere</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/02" class="wikilink1" title="pr:laboratoare:02">Laboratorul 02. IPv6</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/03" class="wikilink1" title="pr:laboratoare:03">Laboratorul 03. OSPF</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/04" class="wikilink1" title="pr:laboratoare:04">Laboratorul 04. OSPF (2)</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/05" class="wikilink1" title="pr:laboratoare:05">Laboratorul 05. ACL-uri</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/06" class="wikilink1" title="pr:laboratoare:06">Laboratorul 06. Optimizarea rutării</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/07" class="wikilink1" title="pr:laboratoare:07">Laboratorul 07. BGP (1)</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/08" class="wikilink1" title="pr:laboratoare:08">Laboratorul 08. BGP (2)</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/09" class="wikilink1" title="pr:laboratoare:09">Laboratorul 09. GRE și IPsec</a></div></li>
+<li class="level1"><div class="li"><span class="curid"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/10" class="wikilink1" title="pr:laboratoare:10">Laboratorul 10. Recapitulare</a></span></div></li>
+</ul>
+</div></div>
+
+</div>
+<!-- EDIT1 SECTION "Laboratoare" [1-59] -->
+<h1 class="sectionedit2" id="resurse">Resurse</h1>
+<div class="level1">
+
+</div>
+<!-- EDIT2 SECTION "Resurse" [60-] -->
+</div>
+<div class="toc_sidebar sidebar_box">
+<!-- TOC START -->
+<div id="sb__right__dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level2"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/10#laboratorul_10_recapitulare">Laboratorul 10. Recapitulare</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/10#topologie">Topologie</a></div></li>
+<li class="level3"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/10#cerinte">Cerințe</a></div>
+<ul class="toc">
+<li class="level4"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/10#setup">Setup</a></div></li>
+<li class="level4"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/10#exercitii">Exerciții</a></div></li>
+</ul>
+</li>
+<li class="level3"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/10#adresare_ip_10p">1. Adresare IP (10p)</a></div></li>
+<li class="level3"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/10#ospf_35p">2. OSPF (35p)</a></div></li>
+<li class="level3"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/10#ipv6_20p">3. IPv6 (20p)</a></div></li>
+<li class="level3"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/10#route_filtering_10p">4. Route filtering (10p)</a></div></li>
+<li class="level3"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/10#bgp_35p">5. BGP (35p)</a></div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+</div>
+        </div>
+      
+    
+      <div class="stylefoot">
+        <div class="meta">
+          <div class="user">
+                    </div>
+          <div class="doc">
+          pr/laboratoare/10.txt · Last modified: 2017/01/18 15:51 by sergiu.costea          </div>
+        </div>
+      </div>
+
+    <div class="clearer"></div>
+
+    
+                <div class="bar" id="bar__bottom">
+      <div class="bar-left">
+        <a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/10?do=revisions" class="action revs" accesskey="o" rel="nofollow" title="Old revisions [O]">Old revisions</a>      </div>
+      <div class="bar-right">
+        <a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/10?do=media&amp;ns=pr%3Alaboratoare" class="action media" rel="nofollow" title="Media Manager">Media Manager</a><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/10#dokuwiki__top" class="action top" accesskey="t" rel="nofollow" title="Back to top [T]">Back to top</a>      </div>
+    </div>
+    <div class="clearer"></div>
+            
+    <div align="center" class="footerinc">
+  <div class="license"><a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/cc-by-sa.png" alt="CC Attribution-Share Alike 3.0 Unported"></a></div>
+  <a target="_blank" href="http://www.chimeric.de/" title="www.chimeric.de"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/button-chimeric-de.png" width="80" height="15" alt="www.chimeric.de" border="0"></a>
+
+  <a target="_blank" href="http://jigsaw.w3.org/css-validator/check/referer" title="Valid CSS"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/button-css.png" width="80" height="15" alt="Valid CSS" border="0"></a>
+
+  <a target="_blank" href="http://wiki.splitbrain.org/wiki:dokuwiki" title="Driven by DokuWiki"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" border="0"></a>
+
+  <a target="_blank" href="http://www.firefox-browser.de/" title="do yourself a favour and use a real browser - get firefox"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/button-firefox.png" width="80" height="15" alt="do yourself a favour and use a real browser - get firefox!!" border="0"></a>
+  
+  <a target="_blank" href="https://ocw.cs.pub.ro/courses/feed.php" title="Recent changes RSS feed"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/button-rss.png" width="80" height="15" alt="Recent changes RSS feed" border="0"></a>
+
+  <a target="_blank" href="http://validator.w3.org/check/referer" title="Valid XHTML 1.0"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/button-xhtml.png" width="80" height="15" alt="Valid XHTML 1.0" border="0"></a>
+</div>
+
+  </div>
+</div>
+
+<div class="no"><img src="./Laboratorul 10. Recapitulare [CS Open CourseWare]_files/indexer.php" width="2" height="1" alt=""></div>
+
+
+</body></html>

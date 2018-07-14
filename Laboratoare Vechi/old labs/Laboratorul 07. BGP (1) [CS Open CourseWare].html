@@ -1,0 +1,478 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0047)https://ocw.cs.pub.ro/courses/pr/laboratoare/07 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>
+    Laboratorul 07. BGP (1)    [CS Open CourseWare]
+  </title>
+
+  <meta name="generator" content="DokuWiki">
+<meta name="robots" content="index,follow">
+<meta name="date" content="2017-01-17T10:55:25+0200">
+<meta name="keywords" content="pr,laboratoare,07">
+<link rel="search" type="application/opensearchdescription+xml" href="https://ocw.cs.pub.ro/courses/lib/exe/opensearch.php" title="CS Open CourseWare">
+<link rel="start" href="https://ocw.cs.pub.ro/courses/">
+<link rel="alternate" type="application/rss+xml" title="Recent Changes" href="https://ocw.cs.pub.ro/courses/feed.php">
+<link rel="alternate" type="application/rss+xml" title="Current Namespace" href="https://ocw.cs.pub.ro/courses/feed.php?mode=list&amp;ns=pr:laboratoare">
+<link rel="alternate" type="text/html" title="Plain HTML" href="https://ocw.cs.pub.ro/courses/_export/xhtml/pr/laboratoare/07">
+<link rel="canonical" href="http://ocw.cs.pub.ro/courses/pr/laboratoare/07">
+<link rel="stylesheet" type="text/css" href="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/css.php">
+<script type="text/javascript">/*<![CDATA[*/var NS='pr:laboratoare';var JSINFO = {"id":"pr:laboratoare:07","namespace":"pr:laboratoare","isadmin":0,"isauth":0};
+/*!]]>*/</script>
+<script type="text/javascript" charset="utf-8" src="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/js.php"></script>
+<script type="text/x-mathjax-config;executed=true">/*<![CDATA[*/MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+        displayMath: [ ["$$","$$"], ["\\[","\\]"] ],
+        processEscapes: true
+    }
+});
+/*!]]>*/</script>
+<script src="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/MathJax.js.download" id=""></script>
+<script type="text/javascript">/*<![CDATA[*/
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		  
+/*!]]>*/</script><script src="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/ga.js.download" type="text/javascript"></script>
+<script type="text/javascript">/*<![CDATA[*/
+var pageTracker = _gat._getTracker("UA-38383934-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+		  
+/*!]]>*/</script>
+
+  <link rel="shortcut icon" href="https://ocw.cs.pub.ro/courses/lib/tpl/arctic/images/favicon.ico">
+
+  
+<style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body><div id="MathJax_Message" style="display: none;"></div>
+<div id="wrapper" class="show">
+  <div class="dokuwiki">
+
+    
+    <div class="stylehead">
+      <div class="header">
+        <div class="pagename">
+          <a href="https://ocw.cs.pub.ro/courses/pr/"><img height="70" src="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/sigla_pr.png"> </a>        </div>
+        <div class="logo">
+          <a style="color: #AAA !important;" href="https://ocw.cs.pub.ro/courses/systems/"><img height="70" src="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/systems.png" name="dokuwiki__top"></a>        </div>
+      </div>
+    
+       
+      <div class="breadcrumbs">
+              </div>
+      
+            </div>
+
+                  <div class="bar" id="bar__top">
+        <div class="bar-left">
+                  </div>
+        <div class="bar-right">
+          <a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/07?do=recent" class="action recent" accesskey="r" rel="nofollow" title="Recent changes [R]">Recent changes</a><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/07?do=login&amp;sectok=ef1d3ac6a545396b85c4b4754dfe2228" class="action login" rel="nofollow" title="Login">Login</a>        </div>
+    </div>
+        
+    
+    
+    
+              <div class="left_page">
+          
+<h2 class="sectionedit1" id="laboratorul_07_bgp_1">Laboratorul 07. BGP (1)</h2>
+<div class="level2">
+
+</div>
+
+<h3 class="sectionedit2" id="motivatie">Motivație</h3>
+<div class="level3">
+
+<p>
+Pentru conectarea noii rețele la Internet se vor folosi 2 provideri (Arcanine și Blastoise). Cum angajații celor 2 ISP-uri nu au absolvit cursul de PR, apar probleme în configurarea corectă a BGP. Vă oferiți să ajutați providerii cu configurarea router-elor lor de edge (pentru o sumă rezonabilă, bineînțeles).
+</p>
+
+<p>
+Configurațiile inițiale (interfețe, adresare IP) sunt deja realizate pe echipamente. De asemenea, pe fiecare router este configurată interfața Lo0, cu IP 150.0.x.x/24. NU modificați setările interfețelor dacă laboratorul nu vă cere explicit acest lucru!
+</p>
+
+</div>
+
+<h3 class="sectionedit3" id="topologie">Topologie</h3>
+<div class="level3">
+
+<p>
+<a href="https://ocw.cs.pub.ro/courses/_detail/pr/laboratoare/7_topologie.png?id=pr%3Alaboratoare%3A07" class="media" title="pr:laboratoare:7_topologie.png"><img src="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/7_topologie.png" class="media" alt="" width="700"></a>
+</p>
+
+</div>
+
+<h3 class="sectionedit4" id="cerinte">Cerinţe</h3>
+<div class="level3">
+
+</div>
+
+<h4 id="setup">Setup</h4>
+<div class="level4">
+
+<p>
+</p><p></p><div class="noteimportant"> Descărcați configurațiile inițiale de <a href="https://ocw.cs.pub.ro/courses/_media/pr/laboratoare/7_bgp_initial_configs.zip" class="media mediafile mf_zip" title="pr:laboratoare:7_bgp_initial_configs.zip (2.7 KB)">aici</a>
+</div><p></p>
+<p></p>
+
+</div>
+
+<h4 id="exercitii">Exercitii</h4>
+<div class="level4">
+
+<p>
+<strong> 1. </strong> [10p] Configurați OSPF area 0 pentru tot sistemul autonom 100 (Eeevee, Garchomp și Lucario). Introduceți în OSPF și interfețele de loopback de pe Eeevee și Lucario.
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;">Pe toate:
+<pre class="code">router ospf 1</pre>
+
+<p>
+Pe interfețele dorite:
+</p>
+<pre class="code">ip ospf 1 area 0</pre>
+</div></div>
+
+<p>
+<strong> 2. </strong> [10p] Configurați adiacențe eBGP între Arcanine și Eeevee și între Blastoise și Lucario. Folosiți adresele IP ale interfețelor direct conectate.
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;">Pe Arcanine:
+<pre class="code">router bgp 200
+neighbor 69.63.186.38 remote-as 100</pre>
+
+<p>
+Pe Eevee:
+</p>
+<pre class="code">router bgp 100
+neighbor 69.63.186.37 remote-as 200</pre>
+
+<p>
+Similar pe Blastoise și Lucario.
+</p>
+</div></div>
+
+<p>
+<strong> 3. </strong> [10p] Configurați adiacență iBGP între Eeevee și Lucario. Folosiți interfețele de loopback pentru stabilirea adiacențelor. Verificați tabelele BGP de pe cele 4 rutere.
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">Eevee(config)#router bgp 100
+Eevee(config-router)#neighbor 150.0.3.3 remote-as 100
+Eevee(config-router)#neighbor 150.0.3.3 update-source lo0
+
+Lucario(config)#router bgp 100
+Lucario(config-router)#neighbor 150.0.1.1 remote-as 100
+Lucario(config-router)#neighbor 150.0.1.1 update-source l0</pre>
+
+<p>
+Nu ar trebui să apară nimic în tabelele de rutare.
+</p>
+</div></div>
+
+<p>
+<strong> 4. </strong> [10p] Propagați interfața Lo0 de pe Arcanine în BGP cu originea internă (i). Propagați doar interfața Lo0 de pe Blastoise în BGP cu originea necunoscută (?). Verificați propagarea corectă a măștii.
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">Arcanine(config)#router bgp 200
+Arcanine(config-router)#network 150.0.5.0 mask 255.255.255.0
+
+Blastoise(config)#ip access-list standard ACL_BGP_RDST
+Blastoise(config-std-nacl)#permit 150.0.4.4 0.0.255.255
+Blastoise(config-std-nacl)#exit
+Blastoise(config)#route-map BGP_RDST
+Blastoise(config-route-map)#match ip add ACL_BGP_RDST
+Blastoise(config-route-map)#exit
+Blastoise(config)#router bgp 300
+Blastoise(config-router)#redistribute connected route-map BGP_RDST</pre>
+</div></div>
+
+<p>
+<strong> 5. </strong> [10p] Configurați protocolul BGP astfel încât Lo0 de pe Blastoise să apară în tabela de rutare de pe Eeevee, respectiv Lo0 de pe Arcanine să apară în tabela de rutare de pe Lucario.
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">Eevee(config)#router bgp 100
+Eevee(config-router)#neighbor 150.0.3.3 next-hop-self
+
+Lucario(config)#router bgp 100
+Lucario(config-router)#neighbor 150.0.1.1 next-hop-self</pre>
+</div></div>
+
+<p>
+<strong> 6. </strong> [5p] Din cauza sincronizării nu există conectivitate între Arcanine și Blastoise (de pe interfețele de loopback). Configurați o adiacență iBGP între Garchomp și Lucario folosind adresele de pe interfața direct conectată.
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">Lucario(config)#router bgp 100
+Lucario(config-router)#neighbor 172.4.0.1 remote-as 100
+
+Garchomp(config)#router bgp 100
+Garchomp(config-router)#neighbor 172.4.0.2 remote-as 100</pre>
+</div></div>
+
+<p>
+<strong> 7. </strong> [15p] Verificați conectivitatea dintre Arcanine și Blastoise. Funcționează? Fără a crea noi adiacențe rezolvați acestă problemă.
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">Lucario(config)#router bgp 100
+Lucario(config-router)#neighbor 172.4.0.1 route-reflector-client
+Lucario(config-router)#neighbor 150.0.1.1 route-reflector-client
+Lucario(config-router)# neighbor 172.4.0.1 next-hop-self</pre>
+</div></div>
+
+<p>
+<strong> 8. </strong> [5p] Adăugați 4 interfețe de loopback din spațiul 192.180.0.0/16 pe ruterul Garchomp. Propagați aceste interfețe în BGP având originea internă (i). Verificați conectivitatea cu aceste interfețe de pe Arcanine și Blastoise.
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">Garchomp(config)#int l0
+Garchomp(config-if)#ip add 192.180.0.1 255.255.255.0
+Garchomp(config-if)#int l1
+Garchomp(config-if)#ip add 192.180.1.1 255.255.255.0
+Garchomp(config-if)#int l2
+Garchomp(config-if)#ip add 192.180.2.1 255.255.255.0
+Garchomp(config-if)#int l3
+Garchomp(config-if)#ip add 192.180.3.1 255.255.255.0
+
+Garchomp(config)#router bgp 100
+Garchomp(config-router)#network 192.180.0.0 mask 255.255.255.0
+Garchomp(config-router)#network 192.180.1.0 mask 255.255.255.0
+Garchomp(config-router)#network 192.180.2.0 mask 255.255.255.0
+Garchomp(config-router)#network 192.180.3.0 mask 255.255.255.0</pre>
+</div></div>
+
+<p>
+<strong> 9. </strong> [10p] Pe ruterele Eeevee și Lucario filtrați actualizările trimise folosind un route-map (neighbor IP route-map NUME), astfel încât doar primele două interfețe să fie promovate către vecinii eBGP. Pentru a vedea modificările resetați conexiunea eBGP (clear ip bgp NEIGHBOR).
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">Eevee(config)#ip access-list standard ACL_BGP_Arcanine_OUT
+Eevee(config-std-nacl)#permit 192.180.0.0 0.0.0.255
+Eevee(config-std-nacl)#permit 192.180.1.0 0.0.0.255
+Eevee(config-std-nacl)#exit
+Eevee(config)#route-map BGP_Arcanine_OUT
+Eevee(config-route-map)#match ip add ACL_BGP_Arcanine_OUT
+Eevee(config-route-map)#exit
+Eevee(config)#router bgp 100
+Eevee(config-router)#neighbor 69.63.186.37 route-map BGP_Arcanine_OUT out 
+Eevee(config)#ip access-list standard ACL_BGP_Arcanine_OUT
+Eevee(config-std-nacl)#25 permit 150.0.4.0 0.0.0.255</pre>
+
+<p>
+Pe Lucario asemănător.
+</p>
+</div></div>
+
+<p>
+<strong> 10. </strong> [5p] Verificați conectivitatea între Arcanine și Blastoise (interfețele de loopback). La sfârșitul acestui exercițiu trebuie să aveți conectivitate.
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">Arcanine# ping 150.0.4.4 source lo0</pre>
+</div></div>
+
+<p>
+<strong> 11. </strong> [10p] Creați două interfețe de loopback pe Arcanine și Blastoise (loopback1) folosind adresele 192.168.0.1/24, respectiv 192.168.1.1/24. Configurați o adiacență eBGP între Arcanine și Blastoise, folosind cele două interfețe create. Pentru conectivitate folosiți rute statice.
+</p>
+<div class="solution"><div class="solution_title hidden_solution_title"><img src="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/tool-source.png"><span class="title_text">Afișează rezolvarea</span></div><div class="hide_text">Ascunde rezolvarea</div><div class="show_text">Afișează rezolvarea</div><div class="solution_contents hidden_solution_contents" style="display: none;"><pre class="code">Arcanine(config)#int l1
+Arcanine(config-if)#ip add 192.168.0.1 255.255.255.0
+Arcanine(config-if)#exit
+Arcanine(config)#ip route 192.168.1.0 255.255.255.0 74.125.39.102
+Arcanine(config)#ip route 192.168.1.0 255.255.255.0 87.248.113.14
+Arcanine(config)#router bgp 200
+Arcanine(config-router)#neighbor 192.168.1.1 remote-as 300
+Arcanine(config-router)#neighbor 192.168.1.1 update-source l1
+Arcanine(config-router)#neighbor 192.168.1.1 ebgp-multihop 2
+
+Blastoise(config)#int l1
+Blastoise(config-if)#ip add 192.168.1.1 255.255.255.0
+Blastoise(config-if)#exit
+Blastoise(config)#ip route 192.168.0.0 255.255.255.0 74.125.39.101
+Blastoise(config)#ip route 192.168.0.0 255.255.255.0 87.248.113.13
+Blastoise(config)#router bgp 300
+Blastoise(config-router)#neighbor 192.168.0.1 remote-as 200
+Blastoise(config-router)#neighbor 192.168.0.1 update-source l1
+Blastoise(config-router)#neighbor 192.168.0.1 ebgp-multihop 2</pre>
+</div></div>
+
+</div>
+
+        </div>
+        <div class="right_sidebar">
+          <form action="https://ocw.cs.pub.ro/courses/start" accept-charset="utf-8" class="search" id="dw__search" method="get"><div class="no"><input type="hidden" name="do" value="search"><input type="text" id="qsearch__in" accesskey="f" name="id" class="edit" title="[F]"><input type="submit" value="Search" class="button" title="Search"><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>          <div class="namespace_sidebar sidebar_box">
+
+<h1 class="sectionedit1" id="laboratoare">Laboratoare</h1>
+<div class="level1">
+
+<div><div id="nojs_indexmenu_179896533559c8a677ae394" data-jsajax="" class="indexmenu_nojs">
+
+<ul class="idx">
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/01" class="wikilink1" title="pr:laboratoare:01">Laboratorul 01. Introducere</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/02" class="wikilink1" title="pr:laboratoare:02">Laboratorul 02. IPv6</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/03" class="wikilink1" title="pr:laboratoare:03">Laboratorul 03. OSPF</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/04" class="wikilink1" title="pr:laboratoare:04">Laboratorul 04. OSPF (2)</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/05" class="wikilink1" title="pr:laboratoare:05">Laboratorul 05. ACL-uri</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/06" class="wikilink1" title="pr:laboratoare:06">Laboratorul 06. Optimizarea rutării</a></div></li>
+<li class="level1"><div class="li"><span class="curid"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/07" class="wikilink1" title="pr:laboratoare:07">Laboratorul 07. BGP (1)</a></span></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/08" class="wikilink1" title="pr:laboratoare:08">Laboratorul 08. BGP (2)</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/09" class="wikilink1" title="pr:laboratoare:09">Laboratorul 09. GRE și IPsec</a></div></li>
+<li class="level1"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/10" class="wikilink1" title="pr:laboratoare:10">Laboratorul 10. Recapitulare</a></div></li>
+</ul>
+</div></div>
+
+</div>
+<!-- EDIT1 SECTION "Laboratoare" [1-59] -->
+<h1 class="sectionedit2" id="resurse">Resurse</h1>
+<div class="level1">
+
+</div>
+<!-- EDIT2 SECTION "Resurse" [60-] -->
+</div>
+<div class="toc_sidebar sidebar_box">
+<!-- TOC START -->
+<div id="sb__right__dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level2"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/07#laboratorul_07_bgp_1">Laboratorul 07. BGP (1)</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/07#motivatie">Motivație</a></div></li>
+<li class="level3"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/07#topologie">Topologie</a></div></li>
+<li class="level3"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/07#cerinte">Cerinţe</a></div>
+<ul class="toc">
+<li class="level4"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/07#setup">Setup</a></div></li>
+<li class="level4"><div class="li"><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/07#exercitii">Exercitii</a></div></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+</div>
+        </div>
+      
+    
+      <div class="stylefoot">
+        <div class="meta">
+          <div class="user">
+                    </div>
+          <div class="doc">
+          pr/laboratoare/07.txt · Last modified: 2017/01/17 10:55 by sergiu.costea          </div>
+        </div>
+      </div>
+
+    <div class="clearer"></div>
+
+    
+                <div class="bar" id="bar__bottom">
+      <div class="bar-left">
+        <a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/07?do=revisions" class="action revs" accesskey="o" rel="nofollow" title="Old revisions [O]">Old revisions</a>      </div>
+      <div class="bar-right">
+        <a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/07?do=media&amp;ns=pr%3Alaboratoare" class="action media" rel="nofollow" title="Media Manager">Media Manager</a><a href="https://ocw.cs.pub.ro/courses/pr/laboratoare/07#dokuwiki__top" class="action top" accesskey="t" rel="nofollow" title="Back to top [T]">Back to top</a>      </div>
+    </div>
+    <div class="clearer"></div>
+            
+    <div align="center" class="footerinc">
+  <div class="license"><a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license"><img src="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/cc-by-sa.png" alt="CC Attribution-Share Alike 3.0 Unported"></a></div>
+  <a target="_blank" href="http://www.chimeric.de/" title="www.chimeric.de"><img src="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/button-chimeric-de.png" width="80" height="15" alt="www.chimeric.de" border="0"></a>
+
+  <a target="_blank" href="http://jigsaw.w3.org/css-validator/check/referer" title="Valid CSS"><img src="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/button-css.png" width="80" height="15" alt="Valid CSS" border="0"></a>
+
+  <a target="_blank" href="http://wiki.splitbrain.org/wiki:dokuwiki" title="Driven by DokuWiki"><img src="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" border="0"></a>
+
+  <a target="_blank" href="http://www.firefox-browser.de/" title="do yourself a favour and use a real browser - get firefox"><img src="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/button-firefox.png" width="80" height="15" alt="do yourself a favour and use a real browser - get firefox!!" border="0"></a>
+  
+  <a target="_blank" href="https://ocw.cs.pub.ro/courses/feed.php" title="Recent changes RSS feed"><img src="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/button-rss.png" width="80" height="15" alt="Recent changes RSS feed" border="0"></a>
+
+  <a target="_blank" href="http://validator.w3.org/check/referer" title="Valid XHTML 1.0"><img src="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/button-xhtml.png" width="80" height="15" alt="Valid XHTML 1.0" border="0"></a>
+</div>
+
+  </div>
+</div>
+
+<div class="no"><img src="./Laboratorul 07. BGP (1) [CS Open CourseWare]_files/indexer.php" width="2" height="1" alt=""></div>
+
+
+</body></html>
